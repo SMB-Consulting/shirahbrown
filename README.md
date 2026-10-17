@@ -1,6 +1,6 @@
 # shirahbrown
 
-Personal site for **Shirah Brown** — Fractional Technology Executive (Salesforce & enterprise architecture).
+Consulting site for **Shirah Brown** — systems architecture, digital strategy and design.
 Single self-contained static page, hosted on GitHub Pages at **shirahbrown.com**.
 
 ## Structure
@@ -34,6 +34,7 @@ Point the apex + www to GitHub Pages:
 - Redirect `shirahmariebrown.com` → `shirahbrown.com`
 
 ## Notes / TODO
-- About-section portrait is a placeholder (SMB monogram) until a headshot is added → `assets/` + swap the `.portrait` block.
+- About-section portrait: `assets/shirah-m-brown-portrait.jpg`.
+- Credits and Recent work describe consulting clients by industry only — never by name.
 - `[X] days/month` in the Fractional card is a placeholder.
 - Proof section is intentionally de-identified — do **not** add client-attributed confidential metrics.
