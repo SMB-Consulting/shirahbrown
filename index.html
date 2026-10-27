@@ -232,6 +232,13 @@
   .caps4 .cap .qual{display:block;margin-top:9px;font-size:14px;color:var(--muted)}
   .sec-head p.aud{margin-top:18px;font-size:15.5px;color:var(--body);padding-left:16px;border-left:2px solid var(--line)}
 
+  /* SCROLL BUTTONS */
+  .jump{position:fixed;right:20px;bottom:22px;z-index:60;display:flex;flex-direction:column;gap:10px}
+  .jump a{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--ink);border:1.5px solid var(--gold);color:var(--gold);box-shadow:0 8px 20px rgba(0,0,0,.25);transition:opacity .2s,transform .2s,background .2s,color .2s}
+  .jump a:hover{background:var(--gold);color:var(--ink)}
+  .jump a.off{opacity:0;pointer-events:none;transform:translateY(6px)}
+  .jump svg{width:18px;height:18px}
+  @media(max-width:640px){.jump{right:14px;bottom:16px}.jump a{width:40px;height:40px}}
 </style>
 </head>
 <body>
@@ -599,6 +606,23 @@
     <div>Systems Architecture &amp; Digital Strategy · Philadelphia · shirahbrown.com</div>
   </div>
 </footer>
+
+<div class="jump">
+  <a href="#top" id="toTop" class="off" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></a>
+  <a href="#contact" id="toBottom" aria-label="Jump to contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+</div>
+<script>
+(function(){
+  var up=document.getElementById('toTop'),dn=document.getElementById('toBottom');
+  function upd(){
+    var y=window.scrollY,max=document.documentElement.scrollHeight-window.innerHeight;
+    up.classList.toggle('off',y<400);
+    dn.classList.toggle('off',y>max-400);
+  }
+  up.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0});});
+  window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
+})();
+</script>
 
 </body>
 </html>
