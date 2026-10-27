@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shirah Brown — Systems Architecture &amp; Digital Infrastructure</title>
+<title>Shirah Brown — Systems Architecture &amp; Digital Strategy</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png?v=2">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?v=2">
 <link rel="canonical" href="https://shirahbrown.com/">
-<meta name="description" content="Systems architecture, digital infrastructure, CRM strategy and workflow automation for organizations that have outgrown the way their systems were built. Solution architecture, digital strategy and design, and hands-on delivery. Philadelphia.">
+<meta name="description" content="Systems architecture and digital strategy for organizations that have outgrown the way their systems were built: websites, email, analytics, CRM and automation, designed and delivered hands-on. Philadelphia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shirahbrown.com">
-<meta property="og:title" content="Shirah Brown — Systems Architecture &amp; Digital Infrastructure">
-<meta property="og:description" content="I turn ambiguous organizational problems into executable systems — architecture, digital infrastructure, CRM, automation, and the operating model that holds them together.">
+<meta property="og:title" content="Shirah Brown — Systems Architecture &amp; Digital Strategy">
+<meta property="og:description" content="I turn ambiguous organizational problems into executable systems — digital strategy, websites, CRM, data and automation, and the operating model that holds them together.">
 <meta property="og:image" content="https://shirahbrown.com/assets/social-card.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Shirah Brown — Systems Architecture &amp; Digital Infrastructure">
-<meta name="twitter:description" content="I turn ambiguous organizational problems into executable systems — architecture, digital infrastructure, CRM, automation, and the operating model that holds them together.">
+<meta name="twitter:title" content="Shirah Brown — Systems Architecture &amp; Digital Strategy">
+<meta name="twitter:description" content="I turn ambiguous organizational problems into executable systems — digital strategy, websites, CRM, data and automation, and the operating model that holds them together.">
 <meta name="twitter:image" content="https://shirahbrown.com/assets/social-card.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,16 +70,34 @@
   .hero{background:radial-gradient(120% 130% at 85% 0%,#262629 0%,var(--char) 42%,var(--ink) 100%);color:#efe9e2;padding:104px 0 96px;position:relative;overflow:hidden}
   .hero:after{content:"";position:absolute;left:30px;bottom:38px;width:120px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
   .hero .eyebrow{color:var(--gold)}
-  .hero h1{font-size:54px;max-width:25ch;margin:20px 0 10px;color:#fbf7f1;font-weight:800}
+  .hero h1{max-width:22ch;margin:20px 0 10px;color:#fbf7f1;font-weight:800}
   .hero h1 .amp{color:var(--gold)}
-  .hero .lead{font-size:19px;color:#cfc7bd;max-width:58ch;margin:22px 0 20px}
+  .hero .lead{font-size:18.5px;color:#cfc7bd;max-width:52ch;margin:22px 0 20px}
   .hero .prob{font-size:16.5px;color:var(--gold-lt);max-width:52ch;margin:0 0 32px;font-weight:600;letter-spacing:.01em}
   .hero .bars{display:flex;flex-direction:column;gap:6px;margin-bottom:26px}
   .hero .bars span{height:3px;background:var(--gold);border-radius:2px;opacity:.9}
   .hero .bars span:nth-child(1){width:70px}
   .hero .bars span:nth-child(2){width:150px}
   .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-  @media(max-width:640px){.hero h1{font-size:37px}.hero{padding:68px 0 60px}}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:center}
+  .hero h1{font-size:50px}
+  .hero-art{position:relative}
+  .net{width:122%;margin:0 -12% 0 -6%;height:auto;display:block;overflow:visible}
+  @media(max-width:900px){.net{width:100%;margin:0}}
+  .net .edges line{stroke:var(--gold-dk);stroke-width:1.1;opacity:.75;stroke-dasharray:240;stroke-dashoffset:240;animation:draw 1.6s ease-out forwards}
+  .net .edges line:nth-child(2n){animation-delay:.25s}
+  .net .edges line:nth-child(3n){animation-delay:.5s}
+  .net .links line{stroke:var(--gold);stroke-width:1;stroke-dasharray:3 6;opacity:0;animation:fadein 1s ease-out 1.6s forwards}
+  .net .nodes circle{fill:var(--ink);stroke:var(--gold);stroke-width:1.8;opacity:0;animation:fadein .6s ease-out .9s forwards}
+  .net .nodes .dot{fill:var(--gold);stroke:none}
+  .net .nodes .hub{animation:fadein .6s ease-out .9s forwards,pulse 4.5s ease-in-out 2.4s infinite;transform-box:fill-box;transform-origin:center}
+  .net .plate{fill:#f3ece5;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45))}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fadein{to{opacity:1}}
+  @keyframes pulse{0%,100%{stroke-width:1.8;opacity:1}50%{stroke-width:3.2;opacity:.75}}
+  @media(prefers-reduced-motion:reduce){.net *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}.net .edges line{opacity:.75!important}}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:8px}.hero-art{max-width:420px;margin:30px auto 0;width:100%}}
+  @media(max-width:640px){.hero h1{font-size:36px}.hero{padding:64px 0 56px}}
 
   /* SECTIONS */
   section.blk{padding:82px 0}
@@ -229,13 +247,13 @@
   <div class="wrap nav-inner">
     <div class="brand">
       <img src="assets/logo-smb-shirah.png" alt="SMB · Shirah M. Brown" width="48" height="48">
-      <div class="wm">Shirah Brown<small>Systems Architecture &amp; Digital Infrastructure</small></div>
+      <div class="wm">Shirah Brown<small>Systems Architecture &amp; Digital Strategy</small></div>
     </div>
     <nav>
       <ul>
         <li class="hide-m"><a href="#about">About</a></li>
         <li class="hide-m"><a href="#services">Services</a></li>
-        <li class="hide-m"><a href="#capabilities">Capabilities</a></li>
+        <li class="hide-m"><a href="#digital">Digital</a></li>
         <li class="hide-m"><a href="#work">Work</a></li>
         <li class="hide-m"><a href="#proof">Proof</a></li>
         <li><a class="btn btn-solid" href="#contact">Let's talk</a></li>
@@ -246,15 +264,41 @@
 
 <!-- HERO -->
 <section class="hero" id="main">
-  <div class="wrap">
-    <div class="bars"><span></span><span></span></div>
-    <div class="eyebrow">Systems Architecture · Digital Infrastructure · Operating Models</div>
-    <h1>Systems architecture for <br>organizations in motion.</h1>
-    <p class="lead">I turn ambiguous organizational problems into executable systems — architecture, digital infrastructure, CRM, automation, and the operating model that holds them together.</p>
-    <p class="prob">Most organizations don't need another tool. They need an architecture.</p>
-    <div class="cta-row">
-      <a class="btn btn-solid" href="#services">Work with me →</a>
-      <a class="btn btn-onDark" href="#contact">Get in touch</a>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="bars"><span></span><span></span></div>
+      <div class="eyebrow">Architecture · Digital Strategy · Web &amp; Data</div>
+      <h1>Systems and digital strategy for organizations in motion.</h1>
+      <p class="lead">I turn ambiguous organizational problems into executable systems — digital strategy, websites, CRM, data and automation, and the operating model that holds them together.</p>
+      <p class="prob">Most organizations don't need another tool. They need an architecture.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#services">Work with me →</a>
+        <a class="btn btn-onDark" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg class="net" viewBox="0 0 560 440" focusable="false">
+        <g class="edges">
+          <line x1="30" y1="100" x2="143" y2="156"/><line x1="143" y1="156" x2="211" y2="74"/>
+          <line x1="30" y1="100" x2="78" y2="296"/><line x1="143" y1="156" x2="78" y2="296"/>
+          <line x1="78" y1="296" x2="173" y2="380"/>
+          <line x1="360" y1="64" x2="428" y2="84"/><line x1="428" y1="84" x2="499" y2="168"/>
+          <line x1="499" y1="168" x2="544" y2="76"/><line x1="499" y1="168" x2="452" y2="304"/>
+          <line x1="452" y1="304" x2="384" y2="392"/><line x1="452" y1="304" x2="530" y2="376"/>
+        </g>
+        <g class="links">
+          <line x1="143" y1="156" x2="214" y2="196"/><line x1="452" y1="304" x2="346" y2="252"/>
+        </g>
+        <g class="nodes">
+          <circle cx="30" cy="100" r="5"/><circle cx="211" cy="74" r="4.5"/><circle cx="173" cy="380" r="5"/>
+          <circle cx="360" cy="64" r="4.5"/><circle cx="544" cy="76" r="4.5"/><circle cx="384" cy="392" r="5"/><circle cx="530" cy="376" r="5"/>
+          <circle cx="78" cy="296" r="7"/><circle cx="428" cy="84" r="7"/>
+          <circle class="hub" cx="143" cy="156" r="9"/><circle class="hub" cx="499" cy="168" r="9"/><circle class="hub" cx="452" cy="304" r="8"/>
+          <circle class="dot" cx="143" cy="156" r="3"/><circle class="dot" cx="499" cy="168" r="3"/><circle class="dot" cx="452" cy="304" r="2.6"/>
+        </g>
+        <rect class="plate" x="208" y="148" width="144" height="144" rx="16"/>
+        <image href="assets/logo-smb-shirah.png" x="220" y="160" width="120" height="120"/>
+      </svg>
     </div>
   </div>
 </section>
@@ -347,7 +391,7 @@
       <div class="goldrule"></div>
       <h2>Scoped to the problem, not a template.</h2>
       <p>I work with organizations that need senior systems leadership without a full-time hire — during a transformation, a platform migration, a leadership gap, or a moment when the roadmap is bigger than the team.</p>
-      <p class="aud">Small and midsize organizations, founder-led businesses, professional services firms, membership and community organizations, nonprofits and associations, and public-facing teams moving through growth or transition.</p>
+      <p class="aud">Small and midsize organizations, founder-led businesses, professional services firms, membership and community organizations, nonprofits and associations, campaigns and advocacy groups, and public-facing teams moving through growth or transition.</p>
     </div>
     <div class="cards">
       <div class="card">
@@ -382,8 +426,8 @@
       </div>
       <div class="cap">
         <h3>Digital experience &amp; engagement infrastructure</h3>
-        <p>Website and digital-platform modernization, information architecture, public-facing digital experiences, forms and intake workflows, event and registration systems, email and communications infrastructure, and member, stakeholder or constituent journeys.</p>
-        <span class="qual">Architecture and experience design — not a marketing or graphic-design engagement.</span>
+        <p>Website and digital-platform modernization, website strategy, design and build, information architecture, forms and intake workflows, event and registration systems, email programs, and member, stakeholder or constituent journeys.</p>
+        <span class="qual">Sites designed and built to feed the systems behind them, not stand alone.</span>
       </div>
       <div class="cap">
         <h3>CRM, data &amp; automation</h3>
@@ -394,6 +438,35 @@
         <h3>Fractional systems leadership</h3>
         <p>Fractional solution architecture and technology leadership, digital operations, transformation leadership, vendor coordination and RFPs, implementation oversight, governance, documentation and operating procedures, internal capability building, and operational transition.</p>
         <span class="qual">Senior systems leadership without a full-time CIO, CTO, or architect on payroll.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL STRATEGY & WEB -->
+<section class="blk digital" id="digital">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Digital strategy &amp; web</div>
+      <div class="goldrule"></div>
+      <h2>Presence, outreach and insight, designed as one system.</h2>
+      <p>The website is where most people meet you. I design and build it, connect it to the email and data behind it, and set up the measurement that shows what's working.</p>
+    </div>
+    <div class="grid3">
+      <div class="feat">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="10" width="34" height="26" rx="3"/><path d="M7 17h34"/><path d="M15 25h12M15 30h7" opacity=".55"/></svg>
+        <h3>Websites &amp; presence</h3>
+        <p>Presence audits, brand and web systems, and sites designed and built end to end: structure, content, forms, domains and hosting, ready for whoever maintains them next.</p>
+      </div>
+      <div class="feat">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="12" width="34" height="24" rx="3"/><path d="M8 14l16 12 16-12"/></svg>
+        <h3>Email &amp; outreach</h3>
+        <p>Audience lists and segments, outreach programs and cadences, and the sending setup behind them, so messages reach the right people and land in the inbox.</p>
+      </div>
+      <div class="feat">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 39V9"/><path d="M9 39h30"/><path d="M16 31v-8M24 31V17M32 31v-11" opacity=".75"/></svg>
+        <h3>Analytics &amp; insight</h3>
+        <p>Traffic, engagement and audience data turned into reporting people actually use, and into decisions about where to spend time and money.</p>
       </div>
     </div>
   </div>
@@ -439,6 +512,21 @@
         <h3>Websites and digital presence</h3>
         <p>Website rebuilds and online-presence reviews for Philadelphia small businesses: clearer structure, current content and a path to booking.</p>
       </div>
+      <div class="card">
+        <div class="tag">Campaigns &amp; advocacy</div>
+        <h3>Campaign digital strategy</h3>
+        <p>Volunteer strategy for political campaigns: web presence, constituent email outreach, and analytics on audience and engagement data.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Hospitality</div>
+        <h3>Digital and booking strategy</h3>
+        <p>Digital launch and online booking strategy for a new RV park in development in Philadelphia.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Social club</div>
+        <h3>Brand and website launch</h3>
+        <p>Brand identity, domains and website for a new women's social club, from naming to site build.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -465,6 +553,7 @@
       <div class="row"><span class="role">Member portal design &amp; demo build · Association management software</span><span class="yr">2026</span></div>
       <div class="row"><span class="role">Salesforce advisory &amp; hands-on consulting · Cybersecurity media</span><span class="yr">2025–2026</span></div>
       <div class="row"><span class="role">Websites &amp; digital presence · Philadelphia small businesses</span><span class="yr">2026</span></div>
+      <div class="row"><span class="role">Campaign digital strategy — web, email &amp; analytics · Volunteer</span><span class="yr">2026</span></div>
     </div>
     <div class="track-label" style="margin-top:28px">Enterprise roles</div>
     <div class="hist">
@@ -524,7 +613,7 @@
 <footer>
   <div class="wrap fin">
     <div class="fbrand"><img src="assets/logo-smb-shirah.png" alt="SMB · Shirah M. Brown" width="72" height="72"><b>Shirah Brown</b></div>
-    <div>Systems Architecture &amp; Digital Infrastructure · Philadelphia · shirahbrown.com</div>
+    <div>Systems Architecture &amp; Digital Strategy · Philadelphia · shirahbrown.com</div>
   </div>
 </footer>
 

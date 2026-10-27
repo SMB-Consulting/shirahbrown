@@ -36,5 +36,7 @@ Point the apex + www to GitHub Pages:
 ## Notes / TODO
 - About-section portrait: `assets/shirah-m-brown-portrait.jpg`.
 - Credits and Recent work describe consulting clients by industry only — never by name.
+- Campaign work is described as volunteer support for political campaigns — never by party or candidate.
+- Hero graphic is an inline SVG recreating the business card's gold constellation, with the SMB tile at its center.
 - `[X] days/month` in the Fractional card is a placeholder.
 - Proof section is intentionally de-identified — do **not** add client-attributed confidential metrics.
