@@ -603,24 +603,36 @@
 <footer>
   <div class="wrap fin">
     <div class="fbrand"><img src="assets/logo-smb-shirah.png" alt="SMB · Shirah M. Brown" width="72" height="72"><b>Shirah Brown</b></div>
-    <div>Systems Architecture &amp; Digital Strategy · Philadelphia · shirahbrown.com</div>
+    <div>Systems Architecture &amp; Digital Strategy · Philadelphia · shirahbrown.com<br>© <span id="yr">2026</span> Shirah M. Brown. All rights reserved.</div>
   </div>
 </footer>
 
 <div class="jump">
   <a href="#top" id="toTop" class="off" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></a>
-  <a href="#contact" id="toBottom" aria-label="Jump to contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+  <a href="#contact" id="toBottom" aria-label="Next section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
 </div>
 <script>
 (function(){
   var up=document.getElementById('toTop'),dn=document.getElementById('toBottom');
+  var secs=[].slice.call(document.querySelectorAll('main section, body > section, footer'));
+  var nav=72;
+  function nextSec(){
+    var y=window.scrollY+nav+8;
+    for(var i=0;i<secs.length;i++){ if(secs[i].getBoundingClientRect().top+window.scrollY>y) return secs[i]; }
+    return null;
+  }
   function upd(){
     var y=window.scrollY,max=document.documentElement.scrollHeight-window.innerHeight;
     up.classList.toggle('off',y<400);
-    dn.classList.toggle('off',y>max-400);
+    dn.classList.toggle('off',y>max-40||!nextSec());
   }
   up.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0});});
+  dn.addEventListener('click',function(e){
+    e.preventDefault();var t=nextSec();
+    if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-nav+1});
+  });
   window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
+  var yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();
 })();
 </script>
 
