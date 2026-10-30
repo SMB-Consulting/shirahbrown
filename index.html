@@ -242,6 +242,25 @@
   .jump a.off{opacity:0;pointer-events:none;transform:translateY(6px)}
   .jump svg{width:18px;height:18px}
   @media(max-width:640px){.jump{right:14px;bottom:16px}.jump a{width:40px;height:40px}}
+  /* NETWORK BAND (What I do → Services) */
+  section.blk.pre-band{padding-bottom:26px}
+  #services{padding-top:30px}
+  .netband{max-width:1080px;margin:0 auto;padding:0 30px}
+  .netband svg{width:100%;height:auto;display:block;overflow:visible}
+  @media(max-width:640px){.netband svg{height:96px}}
+  .netband .edges line{stroke:var(--gold-dk);stroke-width:1.1;opacity:.6;stroke-dasharray:200;stroke-dashoffset:200}
+  .netband .links line{stroke:var(--gold-dk);stroke-width:1;stroke-dasharray:3 6;opacity:0}
+  .netband .nodes circle{fill:var(--linen);stroke:var(--gold-dk);stroke-width:1.6;opacity:0}
+  .netband .nodes .dot{fill:var(--gold-dk);stroke:none}
+  .netband .nodes .ring{fill:none;stroke:var(--gold);stroke-width:1;opacity:0}
+  .netband.in .edges line{animation:smbDraw2mcn7 1.4s ease-out forwards}
+  .netband.in .edges line:nth-child(2n){animation-delay:.2s}
+  .netband.in .edges line:nth-child(3n){animation-delay:.4s}
+  .netband.in .nodes circle{animation:smbFade2mcn7 .6s ease-out .7s forwards}
+  .netband.in .links line{animation:smbFade2mcn7 1s ease-out 1.3s forwards}
+  .netband.in .nodes .ring{animation:smbRingBand 4.5s ease-in-out 1.8s infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes smbRingBand{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.55;transform:scale(1.25)}}
+  @media(prefers-reduced-motion:reduce){.netband *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}.netband .edges line{opacity:.6!important}.netband .nodes .ring{opacity:.35!important}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -355,7 +374,7 @@
 </section>
 
 <!-- WHAT I DO -->
-<section class="blk">
+<section class="blk pre-band">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">What I do</div>
@@ -381,6 +400,34 @@
     </div>
   </div>
 </section>
+
+<!-- NETWORK BAND -->
+<div class="netband" aria-hidden="true">
+  <svg viewBox="0 0 1020 140" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <g class="edges">
+      <line x1="10" y1="78" x2="86" y2="44"/><line x1="86" y1="44" x2="158" y2="92"/><line x1="158" y1="92" x2="240" y2="58"/>
+      <line x1="240" y1="58" x2="308" y2="104"/><line x1="240" y1="58" x2="372" y2="62"/><line x1="158" y1="92" x2="120" y2="126"/>
+      <line x1="200" y1="16" x2="240" y2="58"/><line x1="372" y1="62" x2="440" y2="32"/>
+      <line x1="580" y1="104" x2="652" y2="60"/><line x1="652" y1="60" x2="730" y2="94"/><line x1="730" y1="94" x2="800" y2="42"/>
+      <line x1="800" y1="42" x2="870" y2="86"/><line x1="870" y1="86" x2="944" y2="52"/><line x1="944" y1="52" x2="1010" y2="96"/>
+      <line x1="652" y1="60" x2="690" y2="16"/><line x1="870" y1="86" x2="840" y2="128"/>
+    </g>
+    <g class="links">
+      <line x1="372" y1="62" x2="510" y2="70"/><line x1="440" y1="32" x2="510" y2="70"/>
+      <line x1="510" y1="70" x2="580" y2="104"/><line x1="510" y1="70" x2="652" y2="60"/>
+    </g>
+    <g class="nodes">
+      <circle cx="10" cy="78" r="4"/><circle cx="158" cy="92" r="4.5"/><circle cx="120" cy="126" r="3.5"/><circle cx="200" cy="16" r="3.5"/>
+      <circle cx="308" cy="104" r="4"/><circle cx="440" cy="32" r="4"/><circle cx="580" cy="104" r="4"/><circle cx="690" cy="16" r="3.5"/>
+      <circle cx="730" cy="94" r="4.5"/><circle cx="840" cy="128" r="3.5"/><circle cx="944" cy="52" r="4.5"/><circle cx="1010" cy="96" r="4"/>
+      <circle cx="86" cy="44" r="6"/><circle cx="372" cy="62" r="6"/><circle cx="652" cy="60" r="6"/><circle cx="870" cy="86" r="6"/>
+      <circle cx="240" cy="58" r="8"/><circle cx="800" cy="42" r="8"/>
+      <circle class="dot" cx="240" cy="58" r="2.6"/><circle class="dot" cx="800" cy="42" r="2.6"/>
+      <circle class="ring" cx="510" cy="70" r="20"/>
+      <circle cx="510" cy="70" r="10"/><circle class="dot" cx="510" cy="70" r="3.4"/>
+    </g>
+  </svg>
+</div>
 
 <!-- SERVICES -->
 <section class="blk" id="services">
@@ -652,5 +699,10 @@
 })();
 </script>
 
+<script>
+(function(){var b=document.querySelector('.netband');if(!b)return;
+if(!('IntersectionObserver' in window)){b.classList.add('in');return;}
+var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){b.classList.add('in');o.disconnect();}},{threshold:.35});o.observe(b);})();
+</script>
 </body>
 </html>
