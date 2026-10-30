@@ -87,17 +87,17 @@
   .hero-art{position:relative}
   .net{width:122%;margin:0 -12% 0 -6%;height:auto;display:block;overflow:visible}
   @media(max-width:900px){.net{width:100%;margin:0}}
-  .net .edges line{stroke:var(--gold-dk);stroke-width:1.1;opacity:.75;stroke-dasharray:240;stroke-dashoffset:240;animation:draw 1.6s ease-out forwards}
+  .net .edges line{stroke:var(--gold-dk);stroke-width:1.1;opacity:.75;stroke-dasharray:240;stroke-dashoffset:240;animation:smbDraw2mcn7 1.6s ease-out forwards}
   .net .edges line:nth-child(2n){animation-delay:.25s}
   .net .edges line:nth-child(3n){animation-delay:.5s}
-  .net .links line{stroke:var(--gold);stroke-width:1;stroke-dasharray:3 6;opacity:0;animation:fadein 1s ease-out 1.6s forwards}
-  .net .nodes circle{fill:var(--ink);stroke:var(--gold);stroke-width:1.8;opacity:0;animation:fadein .6s ease-out .9s forwards}
+  .net .links line{stroke:var(--gold);stroke-width:1;stroke-dasharray:3 6;opacity:0;animation:smbFade2mcn7 1s ease-out 1.6s forwards}
+  .net .nodes circle{fill:var(--ink);stroke:var(--gold);stroke-width:1.8;opacity:0;animation:smbFade2mcn7 .6s ease-out .9s forwards}
   .net .nodes .dot{fill:var(--gold);stroke:none}
-  .net .nodes .hub{animation:fadein .6s ease-out .9s forwards,pulse 4.5s ease-in-out 2.4s infinite;transform-box:fill-box;transform-origin:center}
+  .net .nodes .hub{animation:smbFade2mcn7 .6s ease-out .9s forwards,smbPulse2mcn7 4.5s ease-in-out 2.4s infinite;transform-box:fill-box;transform-origin:center}
   .net .plate{fill:#f3ece5;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45))}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  @keyframes fadein{to{opacity:1}}
-  @keyframes pulse{0%,100%{stroke-width:1.8;opacity:1}50%{stroke-width:3.2;opacity:.75}}
+  @keyframes smbDraw2mcn7{to{stroke-dashoffset:0}}
+  @keyframes smbFade2mcn7{to{opacity:1}}
+  @keyframes smbPulse2mcn7{0%,100%{stroke-width:1.8;opacity:1}50%{stroke-width:3.2;opacity:.75}}
   @media(prefers-reduced-motion:reduce){.net *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}.net .edges line{opacity:.75!important}}
   @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:8px}.hero-art{max-width:420px;margin:30px auto 0;width:100%}}
   @media(max-width:640px){.hero h1{font-size:36px}.hero{padding:64px 0 56px}}
@@ -245,7 +245,7 @@
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
- {"@type":"Person","@id":"https://shirahbrown.com/#shirah","name":"Shirah M. Brown","alternateName":"Shirah Brown","url":"https://shirahbrown.com/","image":"https://shirahbrown.com/assets/shirah-m-brown-portrait.jpg","jobTitle":"Systems Architect & Digital Strategist","email":"mailto:shirah.m.brown@outlook.com","address":{"@type":"PostalAddress","addressLocality":"Philadelphia","addressRegion":"PA","addressCountry":"US"},"sameAs":["https://www.linkedin.com/in/shirahbrown/"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Manhattan University"},{"@type":"CollegeOrUniversity","name":"Rutgers University"}],"knowsAbout":["Systems architecture","Digital strategy","Website design","Salesforce","CRM","Data and analytics","Workflow automation"]},
+ {"@type":"Person","@id":"https://shirahbrown.com/#shirah","identifier":"smb-ydog1","name":"Shirah M. Brown","alternateName":"Shirah Brown","url":"https://shirahbrown.com/","image":"https://shirahbrown.com/assets/shirah-m-brown-portrait.jpg","jobTitle":"Systems Architect & Digital Strategist","email":"mailto:shirah.m.brown@outlook.com","address":{"@type":"PostalAddress","addressLocality":"Philadelphia","addressRegion":"PA","addressCountry":"US"},"sameAs":["https://www.linkedin.com/in/shirahbrown/"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Manhattan University"},{"@type":"CollegeOrUniversity","name":"Rutgers University"}],"knowsAbout":["Systems architecture","Digital strategy","Website design","Salesforce","CRM","Data and analytics","Workflow automation"]},
  {"@type":"ProfessionalService","@id":"https://shirahbrown.com/#practice","name":"SMB Consulting","url":"https://shirahbrown.com/","logo":"https://shirahbrown.com/assets/logo-smb-shirah.png","image":"https://shirahbrown.com/assets/social-card.png","founder":{"@id":"https://shirahbrown.com/#shirah"},"email":"mailto:shirah.m.brown@outlook.com","areaServed":{"@type":"City","name":"Philadelphia"},"address":{"@type":"PostalAddress","addressLocality":"Philadelphia","addressRegion":"PA","addressCountry":"US"},"description":"Systems architecture and digital strategy: websites, email, analytics, CRM and automation."}
 ]}
 </script>
@@ -288,7 +288,7 @@
       </div>
     </div>
     <div class="hero-art" aria-hidden="true">
-      <svg class="net" viewBox="0 0 560 440" focusable="false">
+      <svg class="net" id="lattice-e1pkm" viewBox="0 0 560 440" focusable="false">
         <g class="edges">
           <line x1="30" y1="100" x2="143" y2="156"/><line x1="143" y1="156" x2="211" y2="74"/>
           <line x1="30" y1="100" x2="78" y2="296"/><line x1="143" y1="156" x2="78" y2="296"/>
