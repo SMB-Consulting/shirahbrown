@@ -211,16 +211,34 @@
   .chain-sec .eyebrow{color:var(--gold)}
   .chain-sec h2{color:#fbf7f1;font-size:31px;margin:14px 0 16px}
   .chain-sec .lede{font-size:17px;color:#b8b1a7;max-width:66ch;line-height:1.7}
-  .chain{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:10px 0;margin:34px 0 26px;padding:0}
-  .chain li{display:flex;align-items:center;font-size:14px;font-weight:600;letter-spacing:.02em;color:#efe9e2;white-space:nowrap}
-  .chain li span{border:1px solid rgba(212,177,124,.34);border-radius:20px;padding:7px 15px;background:rgba(255,255,255,.025)}
-  .chain li:not(:last-child):after{content:"→";color:var(--gold);margin:0 10px;font-size:14px;font-weight:400}
+  .chain{--gx:16px;--gy:22px;--ln:rgba(212,177,124,.55);list-style:none;display:grid;grid-template-columns:repeat(9,1fr);gap:var(--gy) var(--gx);margin:38px 0 30px;padding:0;counter-reset:node}
+  .chain li{position:relative;display:flex;counter-increment:node}
+  .chain li span{flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:64px;padding:10px 11px;border:1px solid rgba(212,177,124,.32);border-radius:6px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.01));font-size:13px;font-weight:600;line-height:1.25;letter-spacing:.01em;color:#efe9e2;position:relative}
+  .chain li span:before{content:counter(node,decimal-leading-zero);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;font-weight:500;letter-spacing:.12em;color:var(--gold)}
+  .chain li span:after{content:"";position:absolute;top:9px;right:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(212,177,124,.14)}
+  .chain li:last-child span{border-color:rgba(212,177,124,.7);background:rgba(212,177,124,.09)}
+  /* connectors: line (::after) + arrowhead (::before) */
+  .chain li:after,.chain li:before{content:"";position:absolute;pointer-events:none}
+  .chain li:after{left:100%;top:50%;width:var(--gx);height:1px;background:var(--ln)}
+  .chain li:before{left:calc(100% + var(--gx) - 5px);top:calc(50% - 2.5px);width:5px;height:5px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);transform:rotate(45deg);transform-origin:center}
+  .chain li:last-child:after,.chain li:last-child:before{display:none}
+  @media(max-width:900px){
+    .chain{grid-template-columns:repeat(3,1fr);--gx:18px;--gy:24px}
+    /* serpentine path: 1-2-3 / 6-5-4 / 7-8-9 */
+    .chain li:nth-child(1){grid-area:1/1}.chain li:nth-child(2){grid-area:1/2}.chain li:nth-child(3){grid-area:1/3}
+    .chain li:nth-child(4){grid-area:2/3}.chain li:nth-child(5){grid-area:2/2}.chain li:nth-child(6){grid-area:2/1}
+    .chain li:nth-child(7){grid-area:3/1}.chain li:nth-child(8){grid-area:3/2}.chain li:nth-child(9){grid-area:3/3}
+    .chain li:nth-child(4):after,.chain li:nth-child(5):after{left:auto;right:100%}
+    .chain li:nth-child(4):before,.chain li:nth-child(5):before{left:auto;right:calc(100% + var(--gx) - 5px);transform:rotate(-135deg)}
+    .chain li:nth-child(3):after,.chain li:nth-child(6):after{left:50%;top:100%;width:1px;height:var(--gy)}
+    .chain li:nth-child(3):before,.chain li:nth-child(6):before{left:calc(50% - 2px);top:calc(100% + var(--gy) - 5px);transform:rotate(135deg)}
+  }
   .chain-note{font-size:16.5px;color:#cfc7bd;max-width:62ch}
   .chain-note b{color:var(--gold-lt);font-weight:600}
   @media(max-width:640px){
-    .chain{flex-direction:column;align-items:flex-start;gap:0}
-    .chain li{flex-direction:column;align-items:flex-start;white-space:normal}
-    .chain li:not(:last-child):after{margin:5px 0 5px 17px;transform:rotate(90deg);display:block}
+    .chain-sec{padding:56px 0}
+    .chain{--gx:12px;--gy:20px;margin:26px 0 22px}
+    .chain li span{min-height:58px;padding:9px 9px;font-size:12px}
     .chain-sec h2{font-size:26px}
   }
 
@@ -535,13 +553,8 @@
       </div>
       <div class="card">
         <div class="tag">Campaigns &amp; advocacy</div>
-        <h3>State House campaign, Philadelphia</h3>
-        <p>Took over digital for a 2026 Pennsylvania House campaign: site fixes and Google Analytics, constituent email to the voter file, press prep, and UTM tracking across text and email outreach.</p>
-      </div>
-      <div class="card">
-        <div class="tag">Campaigns &amp; advocacy</div>
-        <h3>Campaign remediation</h3>
-        <p>For campaigns whose site or materials aren't working: a fast audit of web, email and print, then fixes on the platform they already use, including broken pages, weak donation paths, distorted graphics and missing tracking.</p>
+        <h3>Campaign management and remediation</h3>
+        <p>Digital management for campaigns and advocacy efforts, from site, analytics and email to the voter file through press prep and outreach tracking. For sites or materials that aren't working, a fast audit and fixes on the platform already in use.</p>
       </div>
       <div class="card">
         <div class="tag">Hospitality</div>
@@ -604,7 +617,7 @@
       <div class="row"><span class="role">Member portal design &amp; demo build · Association management software</span><span class="yr">2026</span></div>
       <div class="row"><span class="role">Salesforce advisory &amp; hands-on consulting · Cybersecurity media</span><span class="yr">2025–2026</span></div>
       <div class="row"><span class="role">Websites &amp; digital presence · Philadelphia small businesses</span><span class="yr">2026</span></div>
-      <div class="row"><span class="role">Digital strategy — web, email, analytics &amp; press · Pennsylvania House campaign</span><span class="yr">2026</span></div>
+      <div class="row"><span class="role">Digital strategy — web, email, analytics &amp; press · Campaigns &amp; advocacy</span><span class="yr">2026</span></div>
     </div>
     <div class="track-label" style="margin-top:28px">Enterprise roles</div>
     <div class="hist">
