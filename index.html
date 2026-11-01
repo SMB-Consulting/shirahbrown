@@ -201,13 +201,13 @@
   footer{padding:38px 0;background:var(--ink);color:#8f8a82;font-size:13.5px}
   footer .fin{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   footer .flogo{width:72px;height:72px}
-  footer .fcopy{flex:1;text-align:center}
+  footer .fright{display:flex;align-items:center;gap:16px}
   footer .fsoc{display:flex;gap:10px}
   footer .fsoc a{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,177,124,.45);color:var(--gold);transition:background .2s,color .2s}
   footer .fsoc a:hover{background:var(--gold);color:var(--ink)}
   footer .fsoc svg{width:18px;height:18px}
   .btn-ic{display:inline-flex;align-items:center;gap:9px}.btn-ic .bi{width:18px;height:18px}
-  @media(max-width:640px){footer .fin{flex-direction:column;gap:14px}footer .fcopy{order:3}}
+  @media(max-width:640px){footer .fin{flex-direction:column-reverse;gap:16px;text-align:center}}
 
   /* ACCESSIBILITY */
   .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:#241d12;padding:10px 18px;border-radius:0 0 7px 0;font-size:14px;font-weight:600;z-index:100}
@@ -671,11 +671,13 @@
 
 <footer>
   <div class="wrap fin">
-    <img class="flogo" src="assets/logo-smb-shirah.png" alt="SMB · Shirah M. Brown" width="72" height="72">
     <div class="fcopy">© <span id="yr">2026</span> Shirah M. Brown. All rights reserved.</div>
-    <div class="fsoc">
-      <a href="mailto:shirah.m.brown@outlook.com" aria-label="Email Shirah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
-      <a href="https://www.linkedin.com/in/shirahbrown/" target="_blank" rel="noopener" aria-label="Shirah Brown on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.83v1.5h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13v5.43h-4v-4.82c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.9h-4v-11Z"/></svg></a>
+    <div class="fright">
+      <img class="flogo" src="assets/logo-smb-shirah.png" alt="SMB · Shirah M. Brown" width="72" height="72">
+      <div class="fsoc">
+        <a href="https://www.linkedin.com/in/shirahbrown/" target="_blank" rel="noopener" aria-label="Shirah Brown on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.83v1.5h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13v5.43h-4v-4.82c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.9h-4v-11Z"/></svg></a>
+        <a href="mailto:shirah.m.brown@outlook.com" aria-label="Email Shirah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
+      </div>
     </div>
   </div>
 </footer>
