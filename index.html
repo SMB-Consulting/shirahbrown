@@ -327,6 +327,15 @@
   .proof-dark .sectors li{color:#efe9e2;background:rgba(255,255,255,.03);border-color:rgba(212,177,124,.3)}
   .cta{background:var(--cream)!important;color:var(--body)}
   .cta h2{color:var(--ink)!important}.cta p{color:var(--muted)!important}
+  .inpractice ul{list-style:none;margin:0;padding:0}
+  .inpractice li{position:relative;padding-left:14px;margin-top:6px;line-height:1.5}
+  .inpractice li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--gold-dk)}
+  .tools{margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
+  .tools .track-label{color:var(--gold-txt);margin-bottom:12px}
+  .contact-line{margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+  .contact-line a.em{font-size:19px;font-weight:600;color:var(--ink);border-bottom:2px solid var(--gold);padding-bottom:2px}
+  .contact-line button{font:inherit;font-size:13px;font-weight:600;color:var(--gold-txt);background:#fff;border:1px solid rgba(184,148,93,.5);border-radius:999px;padding:6px 14px;cursor:pointer}
+  .contact-line button:hover{background:var(--gold);color:var(--ink)}
   /* MOBILE COLLAPSIBLE CARDS */
   @media(max-width:640px){
     .clp{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -336,7 +345,7 @@
     .sec-dark .feat.clp::after{border-color:rgba(212,177,124,.6);background:linear-gradient(var(--gold),var(--gold)) center/11px 1.6px no-repeat,linear-gradient(var(--gold),var(--gold)) center/1.6px 11px no-repeat}
     .feat.clp::after,.cap.clp::after{top:12px;right:0}
     .clp h3,.clp .tag{padding-right:34px}
-    .clp:not(.open) > p,.clp:not(.open) .meta,.clp:not(.open) .chips,.cap.clp:not(.open) p{display:none}
+    .clp:not(.open) > p,.clp:not(.open) .meta,.clp:not(.open) .chips,.cap.clp:not(.open) p,.clp:not(.open) .inpractice{display:none}
     .feat.clp{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center}
     .feat.clp .gl{margin:0;width:48px;height:48px;border-radius:13px}.feat.clp .gl svg{width:31px;height:31px}
     .feat.clp h3{margin:0}.feat.clp > p{grid-column:1/-1;margin-top:12px}
@@ -409,7 +418,7 @@
         <li class="hide-m"><a href="#about">About</a></li>
         <li class="hide-m"><a href="#services">Services</a></li>
         <li class="hide-m"><a href="#proof">Proof</a></li>
-        <li><a class="btn btn-solid" href="mailto:shirah.m.brown@outlook.com">Let's talk</a></li>
+        <li><a class="btn btn-solid" href="#contact">Let's talk</a></li>
       </ul>
     </nav>
   </div>
@@ -423,7 +432,7 @@
       <h1>Systems &amp; digital strategy for organizations in motion.</h1>
       <p class="lead">Most organizations don't need another tool. They need an architecture — strategy, websites, CRM, data and automation, and the operating model that holds them together.</p>
       <div class="cta-row">
-        <a class="btn btn-solid" href="mailto:shirah.m.brown@outlook.com">Get in touch</a>
+        <a class="btn btn-solid" href="#contact">Get in touch</a>
       </div>
     </div>
     <div class="hero-art" aria-hidden="true">
@@ -649,30 +658,31 @@
         <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M4 8.5 11 6l10 3 7-2.5v18L21 27l-10-3-7 2.5Z"/><path class="s" d="M11 6v18M21 9v18"/><path class="a" d="M7.5 20.5c3-5 6.5-1 9.5-6s5-4 7.5-5.5" stroke-dasharray="2 2.2"/><circle class="n" cx="7.5" cy="20.5" r="1.6"/><circle class="n" cx="24.5" cy="9" r="1.8"/></svg></span>
         <div>
           <h3>Brand &amp; digital strategy</h3>
-          <p>What people see: brand, presence and a site that brings in inquiries.</p>
-          <ul class="chips"><li>Brand &amp; positioning</li><li>Go-to-market</li><li>Asset generation</li><li>Digital roadmaps</li><li>Presence audits</li><li>Website strategy &amp; build</li><li>Information architecture</li></ul>
-          <p class="inpractice"><b>In practice</b>Brand systems and go-to-market for a software launch, replicable brand and web kits for multi-chapter organizations, sales and event collateral, and presence audits and site rebuilds for small businesses.</p>
+          <p>What people see: the brand, the site and the digital experiences people actually use.</p>
+          <ul class="chips"><li>Brand &amp; positioning</li><li>Go-to-market</li><li>Asset generation</li><li>Digital experience design</li><li>Website strategy &amp; build</li><li>Presence audits</li></ul>
+          <div class="inpractice"><b>In practice</b><ul><li>Branded member portals, event and club sites on one shared design system</li><li>Brand system and go-to-market for a software product launch</li><li>Replicable brand and web kits for multi-chapter organizations</li><li>Presence audits and site rebuilds for small businesses</li></ul></div>
         </div>
       </div>
       <div class="cap">
         <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 27h22"/><path class="s" d="M8 27v-5M13 27v-9M18 27v-6M23 27v-12"/><path class="a" d="M7 17.5l6-5.5 5 3 7-7"/><circle class="n" cx="7" cy="17.5" r="1.6"/><circle class="n" cx="13" cy="12" r="1.6"/><circle class="n" cx="18" cy="15" r="1.6"/><circle class="n" cx="25" cy="8" r="1.9"/></svg></span>
         <div>
           <h3>Data, analytics &amp; outcomes</h3>
-          <p>What&#8217;s working: measurement that turns into decisions.</p>
-          <ul class="chips"><li>Analytics &amp; tracking</li><li>SEO</li><li>Reporting &amp; dashboards</li><li>Automated messaging</li><li>Data consolidation</li><li>Suppression &amp; deduplication</li><li>Tooling &amp; integrations</li></ul>
-          <p class="inpractice"><b>In practice</b>Data sets consolidated and cleaned automatically, with suppression built in; messaging that sends itself; and reporting and tracking that show what&#8217;s actually working across every channel.</p>
+          <p>What&#8217;s working: data you can trust, turned into decisions.</p>
+          <ul class="chips"><li>Analytics &amp; tracking</li><li>SEO</li><li>Reporting &amp; dashboards</li><li>Automated messaging</li><li>Data consolidation</li><li>Suppression &amp; deduplication</li><li>Data warehousing</li></ul>
+          <div class="inpractice"><b>In practice</b><ul><li>Warehouse data flows feeding institutional reporting and analytics</li><li>Data quality and deduplication programs across production orgs</li><li>Consolidated data sets with automated suppression, and messaging that sends itself</li><li>Tracking across site, text and email, so every channel reports back</li></ul></div>
         </div>
       </div>
       <div class="cap">
         <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><ellipse cx="12" cy="7.5" rx="7" ry="2.8"/><path d="M5 7.5v15c0 1.55 3.13 2.8 7 2.8M19 7.5v7"/><path class="s" d="M5 15c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8"/><path class="a" d="M27.8 21a4.6 4.6 0 1 1-2-3.8"/><path class="a" d="m26.3 14.9-.6 2.5 2.5.6"/><circle class="n" cx="23.6" cy="22" r="1.6"/></svg></span>
         <div>
           <h3>CRM &amp; operations</h3>
-          <p>What runs behind it: architecture and process, translated into the right tools.</p>
-          <ul class="chips"><li>Systems architecture</li><li>Business process</li><li>Salesforce</li><li>Fundraising &amp; constituent engagement</li><li>Service management</li><li>Communities &amp; portals</li><li>Lead generation</li><li>Integrations &amp; migrations</li></ul>
-          <p class="inpractice"><b>In practice</b>Financial Services Cloud for a credit union with core-banking integration; Service Cloud with voice and chatbots across managed-services portfolios; member and constituent portals; product catalogs and price books; post-merger org consolidation; and net-new orgs for growing teams.</p>
+          <p>What runs behind it: architecture and business process, translated into the platforms that serve them.</p>
+          <ul class="chips"><li>Systems architecture</li><li>Business process</li><li>Fundraising &amp; constituent engagement</li><li>Service management</li><li>Communities &amp; portals</li><li>Lead generation</li><li>Integrations &amp; migrations</li><li>Licensing &amp; procurement</li></ul>
+          <div class="inpractice"><b>In practice</b><ul><li>An enterprise engagement platform for ~87,500 active users and 50,000 event registrations a year</li><li>Financial Services and Service Cloud for banking, wealth management and credit unions</li><li>$1M+ managed-services portfolios spanning contact centers, voice and AI bots</li><li>Post-acquisition org integration, product catalogs and price books, 400+ user operations</li></ul></div>
         </div>
       </div>
     </div>
+    <div class="tools"><div class="track-label">Platforms &amp; tools</div><ul class="chips"><li>Salesforce Sales, Service &amp; Experience Cloud</li><li>Financial Services Cloud</li><li>Marketing Cloud</li><li>NPSP / HEDA</li><li>ServiceNow</li><li>Snowflake</li><li>Qlik</li><li>Blackthorn Events</li><li>Plauti</li><li>Gearset</li><li>GitHub</li><li>Jira</li><li>OpenAI &amp; Claude</li><li>Google Analytics</li></ul></div>
   </div>
 </section>
 
@@ -759,6 +769,7 @@
     <div class="goldrule"></div>
     <h2>Let's talk about what you're trying to move.</h2>
     <p>Bring me the problem.</p>
+    <div class="contact-line"><a class="em" href="mailto:shirah.m.brown@outlook.com">shirah.m.brown@outlook.com</a><button type="button" id="copyEmail">Copy email</button></div>
   </div>
 </section>
 
@@ -818,6 +829,11 @@ el.addEventListener('keydown',function(e){if(mq.matches&&(e.key==='Enter'||e.key
 function setup(){els.forEach(function(el){if(mq.matches){el.classList.add('clp');el.setAttribute('role','button');el.setAttribute('tabindex','0');el.setAttribute('aria-expanded',el.classList.contains('open')?'true':'false');}
 else{el.classList.remove('clp');el.removeAttribute('role');el.removeAttribute('tabindex');el.removeAttribute('aria-expanded');}});}
 setup();(mq.addEventListener?mq.addEventListener('change',setup):mq.addListener(setup));})();
+</script>
+<script>
+(function(){var b=document.getElementById('copyEmail');if(!b)return;b.addEventListener('click',function(){var e='shirah.m.brown@outlook.com';
+function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email'},1800);}
+if(navigator.clipboard){navigator.clipboard.writeText(e).then(done,function(){prompt('Copy email:',e)});}else{prompt('Copy email:',e);}});})();
 </script>
 </body>
 </html>
