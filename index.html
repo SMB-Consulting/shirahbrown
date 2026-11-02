@@ -32,8 +32,8 @@
     --gold-dk:#b8945d;
     --gold-txt:#8a6528;   /* gold for text on light backgrounds — AA contrast */
     --gold-lt:#e8d2a0;
-    --linen:#faf6f4;        /* soft linen bg */
-    --cream:#f3ece5;
+    --linen:#f6f5f2;        /* soft linen bg */
+    --cream:#efede8;
     --body:#3f3a3a;         /* warm charcoal text */
     --muted:#6e6862;
     --line:#e6ddd4;
@@ -278,6 +278,33 @@
     .card h3{grid-column:2;align-self:start;font-size:19px;margin-bottom:0}
     .card p{margin-top:12px}
   }
+
+  /* SECTION CONTRAST */
+  .sec-white{background:#fff}
+  .sec-white .card{background:var(--linen);border-color:transparent}
+  .sec-dark{background:var(--char);color:#e9e3da;border-top:none!important}
+  .sec-dark .sec-head h2,.sec-dark .feat h3{color:#fbf7f1}
+  .sec-dark .eyebrow{color:var(--gold)}
+  .sec-dark .sec-head p,.sec-dark .feat p{color:#b8b1a7}
+  .sec-dark .card{border-color:transparent}
+  .sec-dark .gl{box-shadow:0 0 0 1px rgba(212,177,124,.25),0 6px 18px rgba(0,0,0,.35)}
+  /* bands take the color of the section above */
+  .netband[class*="nb-"]{max-width:none;padding:0 max(30px,calc((100% - 1020px)/2))}
+  .nb-cream{background:var(--cream)}.nb-cream .nodes circle{fill:var(--cream)}
+  .nb-white{background:#fff}.nb-white .nodes circle{fill:#fff}
+  .nb-dark{background:var(--char)}.nb-dark .nodes circle{fill:var(--char);stroke:var(--gold)}
+  .nb-dark .edges line,.nb-dark .links line{stroke:var(--gold)}
+  .nb-dark .nodes .dot{fill:var(--gold)}
+  /* Proof becomes a light section */
+  .proof{background:var(--linen);color:var(--body)}
+  .proof h2{color:var(--ink)}
+  .proof .stats{background:var(--line);border-color:var(--line)}
+  .proof .stat{background:#fff}
+  .proof .stat .n{color:var(--gold-dk)}
+  .proof .stat .n b{color:var(--ink)}
+  .proof .stat .l{color:var(--muted)}
+  .proof .track-label{color:var(--gold-txt)}
+  .proof .sectors li{color:var(--body);background:#fff;border-color:rgba(184,148,93,.45)}
   /* PULL QUOTE + STRENGTH LIST */
   .pullq{border-left:3px solid var(--gold);padding:2px 0 2px 18px;margin:18px 0 4px;font-size:18px;line-height:1.45;color:var(--ink);font-weight:600;letter-spacing:-.01em}
 
@@ -302,8 +329,6 @@
   #services{padding-top:30px}
   .netband{max-width:1080px;margin:0 auto;padding:0 30px}
   .netband.nb-flip svg{transform:scaleX(-1)}
-  .nb-white{max-width:none;background:#fff;padding:0 max(30px,calc((100% - 1020px)/2))}
-  .nb-white .nodes circle{fill:#fff}
   .netband svg{width:100%;height:auto;display:block;overflow:visible}
   @media(max-width:640px){.netband svg{height:96px}}
   .netband .edges line{stroke:var(--gold-dk);stroke-width:1.1;opacity:.6;stroke-dasharray:200;stroke-dashoffset:200}
@@ -431,7 +456,7 @@
 </section>
 
 <!-- NETWORK BAND -->
-<div class="netband nb-flip" aria-hidden="true">
+<div class="netband nb-flip nb-cream" aria-hidden="true">
   <svg viewBox="0 0 1020 140" preserveAspectRatio="xMidYMid slice" focusable="false">
     <g class="edges">
       <line x1="10" y1="78" x2="86" y2="44"/><line x1="86" y1="44" x2="158" y2="92"/><line x1="158" y1="92" x2="240" y2="58"/>
@@ -459,7 +484,7 @@
 </div>
 
 <!-- WHAT I DO -->
-<section class="blk pre-band">
+<section class="blk pre-band sec-dark">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">How I work</div>
@@ -488,7 +513,7 @@
 </section>
 
 <!-- NETWORK BAND -->
-<div class="netband" aria-hidden="true">
+<div class="netband nb-dark" aria-hidden="true">
   <svg viewBox="0 0 1020 140" preserveAspectRatio="xMidYMid slice" focusable="false">
     <g class="edges">
       <line x1="10" y1="78" x2="86" y2="44"/><line x1="86" y1="44" x2="158" y2="92"/><line x1="158" y1="92" x2="240" y2="58"/>
@@ -516,7 +541,7 @@
 </div>
 
 <!-- SERVICES -->
-<section class="blk" id="services">
+<section class="blk sec-white" id="services">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Services</div>
@@ -583,7 +608,7 @@
 </section>
 
 <!-- NETWORK BAND -->
-<div class="netband nb-shift" aria-hidden="true">
+<div class="netband nb-shift nb-white" aria-hidden="true">
   <svg viewBox="-120 0 1020 140" preserveAspectRatio="xMidYMid slice" focusable="false">
     <g class="edges">
       <line x1="10" y1="78" x2="86" y2="44"/><line x1="86" y1="44" x2="158" y2="92"/><line x1="158" y1="92" x2="240" y2="58"/>
@@ -611,7 +636,7 @@
 </div>
 
 <!-- RECENT WORK -->
-<section class="blk work" id="work">
+<section class="blk work sec-dark" id="work">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Recent work</div>
@@ -661,7 +686,7 @@
 </section>
 
 <!-- NETWORK BAND -->
-<div class="netband nb-flip nb-white" aria-hidden="true">
+<div class="netband nb-flip nb-dark" aria-hidden="true">
   <svg viewBox="0 0 1020 140" preserveAspectRatio="xMidYMid slice" focusable="false">
     <g class="edges">
       <line x1="10" y1="78" x2="86" y2="44"/><line x1="86" y1="44" x2="158" y2="92"/><line x1="158" y1="92" x2="240" y2="58"/>
@@ -692,7 +717,7 @@
 <section class="blk proof" id="proof">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow" style="color:var(--gold)">Proof</div>
+      <div class="eyebrow">Proof</div>
       <div class="goldrule"></div>
       <h2>The shape of the work.</h2>
     </div>
