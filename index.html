@@ -317,6 +317,16 @@
   .case-rows dt:nth-of-type(3),.case-rows dt:nth-of-type(3)+dd{padding-top:10px;border-top:1px solid var(--line)}
   .case-rows dt:nth-of-type(3)+dd{color:var(--ink);font-weight:600}
   @media(max-width:640px){.case-rows{grid-template-columns:1fr;gap:2px}.case-rows dd{margin-bottom:10px}.case-rows dt:nth-of-type(3)+dd{border-top:none;padding-top:0}.clp:not(.open) .case-rows{display:none}.case-rows{grid-column:1/-1;margin-top:14px}}
+  .inpractice{margin-top:12px;font-size:14.5px;color:var(--body);padding-left:12px;border-left:2px solid var(--gold)}
+  .inpractice b{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-txt);margin-bottom:3px}
+  .proof.proof-dark{background:var(--char);color:#e9e3da}
+  .proof-dark h2{color:#fbf7f1}.proof-dark .eyebrow{color:var(--gold)}
+  .proof-dark .stats{background:rgba(212,177,124,.14);border-color:rgba(212,177,124,.14)}
+  .proof-dark .stat{background:#1b1b1f}.proof-dark .stat .n{color:var(--gold)}.proof-dark .stat .n b{color:#fff}.proof-dark .stat .l{color:#a9a297}
+  .proof-dark .track-label{color:var(--gold)}
+  .proof-dark .sectors li{color:#efe9e2;background:rgba(255,255,255,.03);border-color:rgba(212,177,124,.3)}
+  .cta{background:var(--cream)!important;color:var(--body)}
+  .cta h2{color:var(--ink)!important}.cta p{color:var(--muted)!important}
   /* MOBILE COLLAPSIBLE CARDS */
   @media(max-width:640px){
     .clp{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -332,7 +342,7 @@
     .feat.clp h3{margin:0}.feat.clp > p{grid-column:1/-1;margin-top:12px}
     .grid3{gap:18px}
     .caps.caps4{gap:18px}
-    .cap.clp{align-items:center}.cap.clp h3{margin:0}
+    .cap.clp{align-items:center}.cap.clp.open{align-items:flex-start}.cap.clp h3{margin:0}.cap.clp.open h3{padding-top:12px}.cap.clp.open h3+p{padding-right:34px}
     .card.clp:not(.open){padding-top:20px;padding-bottom:20px}
     .card.clp:not(.open) h3{margin-bottom:0}
     .cards{gap:14px}
@@ -398,7 +408,6 @@
       <ul>
         <li class="hide-m"><a href="#about">About</a></li>
         <li class="hide-m"><a href="#services">Services</a></li>
-        <li class="hide-m"><a href="#work">Work</a></li>
         <li class="hide-m"><a href="#proof">Proof</a></li>
         <li><a class="btn btn-solid" href="mailto:shirah.m.brown@outlook.com">Let's talk</a></li>
       </ul>
@@ -642,6 +651,7 @@
           <h3>Brand &amp; digital strategy</h3>
           <p>What people see: brand, presence and a site that brings in inquiries.</p>
           <ul class="chips"><li>Brand &amp; positioning</li><li>Digital roadmaps</li><li>Website strategy &amp; build</li><li>Information architecture</li><li>Forms &amp; intake</li><li>Events &amp; registration</li></ul>
+          <p class="inpractice"><b>In practice</b>A brand guide and reusable site template for a neighborhood civic group, with an events calendar that updates itself.</p>
         </div>
       </div>
       <div class="cap">
@@ -650,6 +660,7 @@
           <h3>Data, analytics &amp; outcomes</h3>
           <p>What&#8217;s working: measurement that turns into decisions.</p>
           <ul class="chips"><li>Analytics &amp; tracking</li><li>SEO</li><li>Reporting &amp; dashboards</li><li>Email &amp; outreach</li><li>Segmentation</li><li>Data quality</li></ul>
+          <p class="inpractice"><b>In practice</b>Analytics and UTM tracking across a campaign&#8217;s site, texts and email, so every channel reports back.</p>
         </div>
       </div>
       <div class="cap">
@@ -658,6 +669,7 @@
           <h3>CRM &amp; operations</h3>
           <p>What runs behind it: architecture and process, translated into the right tools.</p>
           <ul class="chips"><li>Systems architecture</li><li>Business process</li><li>CRM &amp; Salesforce</li><li>Workflow automation</li><li>Integrations</li><li>Platform selection</li></ul>
+          <p class="inpractice"><b>In practice</b>A net-new Salesforce org for a dental group: licensing and architecture review, data migration and automated follow-up.</p>
         </div>
       </div>
     </div>
@@ -692,29 +704,24 @@
   </svg>
 </div>
 
-<!-- RECENT WORK -->
-<section class="blk work sec-dark" id="work">
+<!-- PROOF -->
+<section class="blk proof proof-dark" id="proof">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">Recent work</div>
+      <div class="eyebrow">Proof</div>
       <div class="goldrule"></div>
-      <h2>What it looks like in practice.</h2>
-      <p>Two recent engagements, anonymized.</p>
+      <h2>The shape of the work.</h2>
     </div>
-    <div class="cards cards2">
-      <div class="card case">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 27h22"/><path class="s" d="M8 27v-5M13 27v-9M18 27v-6M23 27v-12"/><path class="a" d="M7 17.5l6-5.5 5 3 7-7"/><circle class="n" cx="7" cy="17.5" r="1.6"/><circle class="n" cx="13" cy="12" r="1.6"/><circle class="n" cx="18" cy="15" r="1.6"/><circle class="n" cx="25" cy="8" r="1.9"/></svg></span>
-        <div class="tag">Data, analytics &amp; outcomes</div>
-        <h3>Outreach with no scoreboard</h3>
-        <dl class="case-rows"><dt>Problem</dt><dd>A one-person campaign sending text blasts to thousands of voters, with no way to see what any of it did.</dd><dt>Built</dt><dd>Google Analytics on the site and UTM tracking on every text and email, so each channel reports back.</dd><dt>Result</dt><dd>A clear read on which outreach actually drives traffic, and where the next dollar should go.</dd></dl>
-      </div>
-      <div class="card case">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><ellipse cx="12" cy="7.5" rx="7" ry="2.8"/><path d="M5 7.5v15c0 1.55 3.13 2.8 7 2.8M19 7.5v7"/><path class="s" d="M5 15c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8"/><path class="a" d="M27.8 21a4.6 4.6 0 1 1-2-3.8"/><path class="a" d="m26.3 14.9-.6 2.5 2.5.6"/><circle class="n" cx="23.6" cy="22" r="1.6"/></svg></span>
-        <div class="tag">CRM &amp; operations</div>
-        <h3>A CRM built from scratch</h3>
-        <dl class="case-rows"><dt>Problem</dt><dd>A dental group&#8217;s team needed a CRM from the ground up, and the right licenses before spending on them.</dd><dt>Built</dt><dd>Licensing and architecture review, edition selection, a sandbox, data migration and automated follow-up cadences.</dd><dt>Result</dt><dd>A Salesforce org the team runs on, with follow-up that no longer depends on memory.</dd></dl>
-      </div>
+    <div class="stats pf-kobn5">
+      <div class="stat"><div class="n">15<b>+</b></div><div class="l">years leading enterprise platform &amp; systems programs</div></div>
+      <div class="stat"><div class="n">$3<b>M+</b></div><div class="l">in programs &amp; managed services led across sectors</div></div>
+      <div class="stat"><div class="n">20<b>+</b></div><div class="l">cross-functional delivery team members led at once</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">sectors, from retail to healthcare</div></div>
     </div>
+    <div class="track-label">Credentials</div>
+    <ul class="sectors creds">
+      <li>MBA, Manhattan University, Cum Laude</li><li>BA, Rutgers University</li><li>Salesforce Certified Administrator</li>
+    </ul>
   </div>
 </section>
 
@@ -745,27 +752,6 @@
     </g>
   </svg>
 </div>
-
-<!-- PROOF -->
-<section class="blk proof" id="proof">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Proof</div>
-      <div class="goldrule"></div>
-      <h2>The shape of the work.</h2>
-    </div>
-    <div class="stats pf-kobn5">
-      <div class="stat"><div class="n">15<b>+</b></div><div class="l">years leading enterprise platform &amp; systems programs</div></div>
-      <div class="stat"><div class="n">$3<b>M+</b></div><div class="l">in programs &amp; managed services led across sectors</div></div>
-      <div class="stat"><div class="n">20<b>+</b></div><div class="l">cross-functional delivery team members led at once</div></div>
-      <div class="stat"><div class="n">10</div><div class="l">sectors, from retail to healthcare</div></div>
-    </div>
-    <div class="track-label">Credentials</div>
-    <ul class="sectors creds">
-      <li>MBA, Manhattan University, Cum Laude</li><li>BA, Rutgers University</li><li>Salesforce Certified Administrator</li>
-    </ul>
-  </div>
-</section>
 
 <!-- CTA -->
 <section class="blk cta" id="contact">
