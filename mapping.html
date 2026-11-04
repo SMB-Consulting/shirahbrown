@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- smb grid 6e4dz · map m0cfp -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precinct, Ward &amp; Division Walk Maps for Campaigns | Philadelphia &amp; Pennsylvania</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?v=2">
+<link rel="canonical" href="https://shirahbrown.com/mapping">
+<meta name="description" content="Interactive precinct, ward and division walk maps for campaigns and canvassing in Philadelphia and Pennsylvania: street-level boundaries, door-knocking turf and live status, built from official City data.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shirahbrown.com/mapping">
+<meta property="og:title" content="Precinct, Ward &amp; Division Walk Maps">
+<meta property="og:description" content="Interactive precinct, ward and division walk maps for campaigns and canvassing in Philadelphia and Pennsylvania: street-level boundaries, door-knocking turf and live status, built from official City data.">
+<meta property="og:image" content="https://shirahbrown.com/assets/social-card.png?v=3">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Wake up, Neo. Follow the white rabbit. (smb-5riqa) */
+    --rule-5riqa:1px;
+    --ink:#131315;          /* near-black charcoal */
+    --char:#1e1e21;         /* charcoal panel */
+    --char2:#2b2b2f;        /* raised charcoal */
+    --gold:#d4b17c;         /* logo gold */
+    --gold-dk:#b8945d;
+    --gold-txt:#8a6528;   /* gold for text on light backgrounds — AA contrast */
+    --gold-lt:#e8d2a0;
+    --linen:#f6f5f2;        /* soft linen bg */
+    --cream:#efede8;
+    --body:#3f3a3a;         /* warm charcoal text */
+    --muted:#6e6862;
+    --line:#e6ddd4;
+    --sans:'Figtree','Aptos',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--body);background:var(--linen);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
+  h1,h2,h3{font-weight:700;line-height:1.12;color:var(--ink);letter-spacing:-0.02em}
+  a{color:inherit;text-decoration:none}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-txt)}
+  .goldrule{width:54px;height:3px;background:var(--gold);border-radius:2px}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(250,246,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand img{width:48px;height:48px;display:block}
+  .brand .wm{font-size:17px;font-weight:700;letter-spacing:.02em;color:var(--ink);line-height:1.05}
+  .brand .wm small{display:block;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-txt);margin-top:2px}
+  nav ul{display:flex;gap:28px;list-style:none;align-items:center}
+  nav a{font-size:14.5px;color:var(--body);font-weight:500}
+  nav a:hover{color:var(--gold-txt)}
+  .btn{display:inline-block;font-family:var(--sans);font-size:14.5px;font-weight:600;padding:12px 24px;border-radius:7px;cursor:pointer;transition:.18s;border:1.5px solid var(--gold-dk);letter-spacing:.01em}
+  .btn-solid{background:var(--gold);color:#241d12;border-color:var(--gold)}
+  .btn-solid:hover{background:var(--gold-dk);border-color:var(--gold-dk);color:#1c1406}
+  .btn-ghost{background:transparent;color:var(--gold-txt)}
+  .btn-ghost:hover{background:var(--gold);color:#241d12;border-color:var(--gold)}
+  .btn-onDark{border-color:rgba(212,177,124,.55);color:var(--gold-lt);background:transparent}
+  .btn-onDark:hover{background:var(--gold);color:#241d12;border-color:var(--gold)}
+  .nav .btn{padding:10px 20px}
+  @media(max-width:740px){nav ul li.hide-m{display:none}}
+  @media(max-width:560px){.brand .wm small{display:none}}
+
+  /* HERO */
+  .hero{background:radial-gradient(120% 130% at 85% 0%,#262629 0%,var(--char) 42%,var(--ink) 100%);color:#efe9e2;padding:84px 0 76px;position:relative;overflow:hidden}
+  .hero:after{content:"";position:absolute;left:30px;bottom:38px;width:120px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .hero .eyebrow{color:var(--gold)}
+  .hero h1{max-width:22ch;margin:20px 0 10px;color:#fbf7f1;font-weight:800}
+  .hero h1 .amp{color:var(--gold)}
+  .hero .lead{font-size:18.5px;color:#cfc7bd;max-width:52ch;margin:22px 0 20px}
+  .hero .prob{font-size:16.5px;color:var(--gold-lt);max-width:52ch;margin:0 0 32px;font-weight:600;letter-spacing:.01em}
+  .hero .bars{display:flex;flex-direction:column;gap:6px;margin-bottom:26px}
+  .hero .bars span{height:3px;background:var(--gold);border-radius:2px;opacity:.9}
+  .hero .bars span:nth-child(1){width:70px}
+  .hero .bars span:nth-child(2){width:150px}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:center}
+  .hero h1{font-size:50px}
+  .hero-art{position:relative}
+  .net{width:122%;margin:0 -12% 0 -6%;height:auto;display:block;overflow:visible}
+  @media(max-width:900px){.net{width:100%;margin:0}}
+  .net .edges line{stroke:var(--gold-dk);stroke-width:1.1;opacity:.75;stroke-dasharray:240;stroke-dashoffset:240;animation:smbDraw2mcn7 1.6s ease-out forwards}
+  .net .edges line:nth-child(2n){animation-delay:.25s}
+  .net .edges line:nth-child(3n){animation-delay:.5s}
+  .net .links line{stroke:var(--gold);stroke-width:1;stroke-dasharray:3 6;opacity:0;animation:smbFade2mcn7 1s ease-out 1.6s forwards}
+  .net .nodes circle{fill:var(--ink);stroke:var(--gold);stroke-width:1.8;opacity:0;animation:smbFade2mcn7 .6s ease-out .9s forwards}
+  .net .nodes .dot{fill:var(--gold);stroke:none}
+  .net .nodes .hub{animation:smbFade2mcn7 .6s ease-out .9s forwards,smbPulse2mcn7 4.5s ease-in-out 2.4s infinite;transform-box:fill-box;transform-origin:center}
+  .net .plate{fill:#18181b;stroke:rgba(212,177,124,.55);stroke-width:1.2;filter:drop-shadow(0 0 22px rgba(212,177,124,.18)) drop-shadow(0 18px 30px rgba(0,0,0,.5))}
+  @keyframes smbDraw2mcn7{to{stroke-dashoffset:0}}
+  @keyframes smbFade2mcn7{to{opacity:1}}
+  @keyframes smbPulse2mcn7{0%,100%{stroke-width:1.8;opacity:1}50%{stroke-width:3.2;opacity:.75}}
+  @media(prefers-reduced-motion:reduce){.net *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}.net .edges line{opacity:.75!important}}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:8px}.hero-art{max-width:300px;margin:14px auto 0;width:100%}}
+  @media(max-width:640px){.hero h1{font-size:34px}.hero{padding:44px 0 32px}.hero .bars{margin-bottom:18px}}
+
+  /* SECTIONS */
+  section.blk{padding:82px 0}
+  .sec-head{margin-bottom:46px;max-width:62ch}
+  .sec-head .goldrule{margin:14px 0 18px}
+  .sec-head h2{font-size:34px;margin-bottom:12px}
+  .sec-head p{font-size:17.5px;color:var(--muted)}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+  @media(max-width:820px){.grid3{grid-template-columns:1fr;gap:26px}}
+  .feat .ic{width:46px;height:46px;margin-bottom:16px;color:var(--gold-dk)}
+  .feat h3{font-size:20px;margin-bottom:9px}
+  .feat p{color:var(--body);font-size:15.5px}
+
+  /* HUMAN ANCHOR */
+  .anchor{background:var(--cream)}
+  .anchor-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center}
+  @media(max-width:820px){.anchor-grid{grid-template-columns:1fr;gap:30px}}
+  .portrait{aspect-ratio:4/5;border-radius:14px;background:linear-gradient(160deg,#2a2a2e,#161618);position:relative;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.28);border:1px solid rgba(212,177,124,.25)}
+  .portrait-wrap{position:relative;isolation:isolate}
+  .portrait-wrap::before{content:"";position:absolute;inset:0;transform:translate(16px,16px);border:1px solid var(--gold);border-radius:14px;z-index:-1;opacity:.85}
+  .portrait-wrap .pbars{position:absolute;top:-22px;left:0;display:flex;flex-direction:column;gap:6px}
+  .portrait-wrap .pbars span{height:3px;background:var(--gold);border-radius:2px}
+  .portrait-wrap .pbars span:nth-child(1){width:44px}
+  .portrait-wrap .pbars span:nth-child(2){width:96px}
+  .portrait-wrap::after{content:"";position:absolute;left:16px;bottom:-30px;width:140px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  @media (max-width:760px){.portrait-wrap{margin:30px 16px 36px 0}.portrait-wrap::before{transform:translate(10px,10px)}}
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .portrait .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold-lt);text-align:center;padding:20px;gap:10px}
+  .portrait .ph .r{width:44px;height:44px;opacity:.8}
+  .portrait .ph small{font-size:11.5px;letter-spacing:.08em;color:#b9b0a4;line-height:1.5}
+  .ph-mono{font-size:34px;font-weight:800;letter-spacing:.16em;color:var(--gold);border:2px solid var(--gold);border-radius:12px;padding:12px 16px;margin-bottom:16px}
+  .anchor h2{font-size:32px;margin-bottom:6px}
+  .anchor .hi{color:var(--gold-txt);font-weight:700}
+  .anchor p{font-size:16.5px;color:var(--body);margin-top:14px}
+
+  /* SERVICES */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:820px){.cards{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 26px;transition:.2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(28,35,37,.09);border-color:var(--gold)}
+  .work{background:#fff;border-top:1px solid var(--line)}
+  .work .card{display:flex;flex-direction:column}
+  .card .tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-txt);margin-bottom:12px}
+  .card h3{font-size:21px;margin-bottom:11px}
+  .card p{font-size:15px;color:var(--body);margin-bottom:16px}
+  .card .meta{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px}
+  .comp{margin-top:38px;display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+  .comp span{font-size:13px;color:var(--body);background:#fff;border:1px solid var(--line);padding:7px 15px;border-radius:20px}
+  .caps-head{margin-top:58px;margin-bottom:30px}
+  .caps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px}
+  @media(max-width:820px){.caps{grid-template-columns:1fr}}
+  .cap{border-top:2px solid var(--gold);padding-top:15px}
+  .cap h3{font-size:16.5px;color:var(--ink);margin-bottom:7px;font-weight:700;letter-spacing:-0.01em}
+  .cap p{font-size:14.5px;color:var(--body)}
+
+  /* PROOF */
+  .proof{background:var(--char);color:#e9e3da}
+  .proof h2{color:#fff}
+  .proof .sec-head p{color:#a9a297}
+  .ph-badge{display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,177,124,.4);border-radius:4px;padding:3px 9px;margin-bottom:22px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(212,177,124,.14);border:1px solid rgba(212,177,124,.14);border-radius:12px;overflow:hidden;margin-bottom:32px}
+  @media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .proof-note{font-size:15.5px;color:#c3bcb1;max-width:74ch;margin:0 0 40px;line-height:1.75}
+  .proof-note b{color:#e9e3da;font-weight:600}
+  .stat{background:#1b1b1f;padding:30px 24px}
+  .stat .n{font-size:42px;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-.02em}
+  .stat .n b{color:#fff;font-weight:800}
+  .stat .l{font-size:13.5px;color:#a9a297;margin-top:11px;line-height:1.45}
+  .hist{display:grid;gap:0}
+  .hist .row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:15px}
+  .hist .row .role{color:#fff;font-weight:500}
+  .hist .row .yr{color:#9a9288;font-size:14px;white-space:nowrap}
+  .cred{margin-top:24px;font-size:13.5px;color:#a9a297;letter-spacing:.01em}
+  .sectors{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 26px;padding:0}
+  .sectors li{font-size:13.5px;font-weight:500;color:#efe9e2;border:1px solid rgba(212,177,124,.3);border-radius:999px;padding:6px 13px;background:rgba(255,255,255,.03)}
+  @media(max-width:640px){.stat{padding:18px 16px}.stat .n{font-size:32px}.stat .l{font-size:12.5px;margin-top:8px}.stats{margin-bottom:26px}}
+  .sectors.creds{margin-bottom:0}.sectors.creds li{border-style:dashed}
+  .track-label{font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+
+  /* PRINCIPLES */
+  .pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:820px){.pcards{grid-template-columns:1fr}}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px 28px;text-align:center;box-shadow:0 6px 18px rgba(28,35,37,.05)}
+  .pcard .ic{width:46px;height:46px;color:var(--gold-dk);margin:0 auto 18px}
+  .pcard h3{font-size:19px;margin-bottom:12px}
+  .pcard p{font-size:15px;color:var(--body)}
+
+  /* CTA */
+  .cta{background:radial-gradient(120% 140% at 15% 10%,#262629,var(--char) 55%,var(--ink));color:#fff;text-align:center}
+  .cta .goldrule{margin:0 auto 22px}
+  .cta h2{color:#fff;font-size:36px;margin-bottom:14px}
+  .cta p{color:#c7bfb4;font-size:18px;max-width:52ch;margin:0 auto}
+  .cta .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .sig{margin-top:30px;color:var(--gold-lt);font-size:16px;letter-spacing:.02em}
+  .sig .arrow{display:inline-block;color:var(--gold);margin-right:8px}
+
+  footer{padding:38px 0;background:var(--ink);color:#8f8a82;font-size:13.5px}
+  footer .fin{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .flogo{width:72px;height:72px}
+  footer .fcopy{flex:1;text-align:left}
+  @media(max-width:640px){footer .fcopy{text-align:center}}
+  footer .fsoc{display:flex;gap:10px}
+  footer .fsoc a{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,177,124,.45);color:var(--gold);transition:background .2s,color .2s}
+  footer .fsoc a:hover{background:var(--gold);color:var(--ink)}
+  footer .fsoc svg{width:18px;height:18px}
+  .btn-ic{display:inline-flex;align-items:center;gap:9px}.btn-ic .bi{width:18px;height:18px}
+  @media(max-width:640px){footer .fin{flex-direction:column;gap:14px}footer .fcopy{order:3}}
+
+  /* ACCESSIBILITY */
+  .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:#241d12;padding:10px 18px;border-radius:0 0 7px 0;font-size:14px;font-weight:600;z-index:100}
+  .skip:focus{left:0}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:3px}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+  /* SYSTEM CHAIN */
+  .chain-sec{background:var(--ink);color:#e9e3da;padding:60px 0}
+  .chain-sec .eyebrow{color:var(--gold)}
+  .chain-sec h2{color:#fbf7f1;font-size:31px;margin:14px 0 16px}
+  .chain-sec .lede{font-size:17px;color:#b8b1a7;max-width:66ch;line-height:1.7}
+  .chain{--gx:16px;--gy:22px;--ln:rgba(212,177,124,.55);list-style:none;display:grid;grid-template-columns:repeat(9,1fr);gap:var(--gy) var(--gx);margin:38px 0 30px;padding:0;counter-reset:node}
+  .chain li{position:relative;display:flex;counter-increment:node}
+  .chain li span{flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:64px;padding:10px 11px;border:1px solid rgba(212,177,124,.32);border-radius:6px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.01));font-size:13px;font-weight:600;line-height:1.25;letter-spacing:.01em;color:#efe9e2;position:relative}
+  .chain li span:before{content:counter(node,decimal-leading-zero);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;font-weight:500;letter-spacing:.12em;color:var(--gold)}
+  .chain li span:after{content:"";position:absolute;top:9px;right:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(212,177,124,.14)}
+  .chain li:last-child span{border-color:rgba(212,177,124,.7);background:rgba(212,177,124,.09)}
+  /* connectors: line (::after) + arrowhead (::before) */
+  .chain li:after,.chain li:before{content:"";position:absolute;pointer-events:none}
+  .chain li:after{left:100%;top:50%;width:var(--gx);height:1px;background:var(--ln)}
+  .chain li:before{left:calc(100% + var(--gx) - 5px);top:calc(50% - 2.5px);width:5px;height:5px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);transform:rotate(45deg);transform-origin:center}
+  .chain li:last-child:after,.chain li:last-child:before{display:none}
+  @media(max-width:900px){
+    .chain{grid-template-columns:repeat(3,1fr);--gx:18px;--gy:24px}
+    /* serpentine path: 1-2-3 / 6-5-4 / 7-8-9 */
+    .chain li:nth-child(1){grid-area:1/1}.chain li:nth-child(2){grid-area:1/2}.chain li:nth-child(3){grid-area:1/3}
+    .chain li:nth-child(4){grid-area:2/3}.chain li:nth-child(5){grid-area:2/2}.chain li:nth-child(6){grid-area:2/1}
+    .chain li:nth-child(7){grid-area:3/1}.chain li:nth-child(8){grid-area:3/2}.chain li:nth-child(9){grid-area:3/3}
+    .chain li:nth-child(4):after,.chain li:nth-child(5):after{left:auto;right:100%}
+    .chain li:nth-child(4):before,.chain li:nth-child(5):before{left:auto;right:calc(100% + var(--gx) - 5px);transform:rotate(-135deg)}
+    .chain li:nth-child(3):after,.chain li:nth-child(6):after{left:50%;top:100%;width:1px;height:var(--gy)}
+    .chain li:nth-child(3):before,.chain li:nth-child(6):before{left:calc(50% - 2px);top:calc(100% + var(--gy) - 5px);transform:rotate(135deg)}
+  }
+  .chain-note{font-size:16.5px;color:#cfc7bd;max-width:62ch}
+  .chain-note b{color:var(--gold-lt);font-weight:600}
+  @media(max-width:640px){
+    .chain-sec{padding:56px 0}
+    .chain{--gx:12px;--gy:20px;margin:26px 0 22px}
+    .chain li span{min-height:58px;padding:9px 9px;font-size:12px}
+    .chain-sec h2{font-size:26px}
+  }
+
+  /* ICON GLYPHS */
+  .gl{width:62px;height:62px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#fcf5ea,#f2e5d0);border:1px solid rgba(184,148,93,.38);color:var(--ink);margin-bottom:18px;flex:none;box-shadow:inset 0 1px 0 #fff,0 4px 12px rgba(138,101,40,.08)}
+  .gl svg{width:40px;height:40px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+  .gl .a{stroke:var(--gold-dk)}
+  .gl .n{fill:var(--gold-dk);stroke:none;transform-box:fill-box;transform-origin:center;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+  .gl .s{opacity:.42}
+  .gl .w{fill:#fffaf2}
+  .card:hover .gl .n,.feat:hover .gl .n,.cap:hover .gl .n{transform:scale(1.45)}
+  .card:hover .gl,.feat:hover .gl,.cap:hover .gl{border-color:var(--gold)}
+  .caps4 .cap{display:flex;gap:18px;border-top:none;padding-top:0}
+  .caps4 .cap .gl{margin-bottom:0}
+  .caps4 .cap h3{font-size:18px;margin-bottom:4px}
+  .caps4 .cap p{font-size:15px;color:var(--muted);margin-bottom:12px}
+  .chips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
+  .chips li{font-size:12.5px;font-weight:500;color:var(--body);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+  @media(max-width:640px){.gl{width:54px;height:54px;border-radius:14px}.gl svg{width:35px;height:35px}.caps4 .cap{gap:14px}}
+  @media(prefers-reduced-motion:reduce){.gl .n{transition:none}}
+  @media(max-width:640px){
+    .card{display:grid!important;grid-template-columns:auto 1fr;column-gap:14px;padding:24px 22px}
+    .card>*{grid-column:1/-1}
+    .card .gl{grid-column:1;grid-row:1/3;width:48px;height:48px;border-radius:13px;margin:0;align-self:center}
+    .card .gl svg{width:31px;height:31px}
+    .card .tag{grid-column:2;align-self:end;margin-bottom:3px}
+    .card h3{grid-column:2;align-self:start;font-size:19px;margin-bottom:0}
+    .card p{margin-top:12px}
+  }
+
+  /* SECTION CONTRAST */
+  .sec-white{background:#fff}
+  .sec-white .card{background:var(--linen);border-color:transparent}
+  .sec-dark{background:var(--char);color:#e9e3da;border-top:none!important}
+  .sec-dark .sec-head h2,.sec-dark .feat h3{color:#fbf7f1}
+  .sec-dark .eyebrow{color:var(--gold)}
+  .sec-dark .sec-head p,.sec-dark .feat p{color:#b8b1a7}
+  .sec-dark .card{border-color:transparent}
+  .sec-dark .gl{box-shadow:0 0 0 1px rgba(212,177,124,.25),0 6px 18px rgba(0,0,0,.35)}
+  /* bands take the color of the section above */
+  .netband[class*="nb-"]{max-width:none;padding:0 max(30px,calc((100% - 1020px)/2))}
+  .nb-cream{background:var(--cream)}.nb-cream .nodes circle{fill:var(--cream)}
+  .nb-white{background:#fff}.nb-white .nodes circle{fill:#fff}
+  .nb-dark{background:var(--char)}.nb-dark .nodes circle{fill:var(--char);stroke:var(--gold)}
+  .nb-dark .edges line,.nb-dark .links line{stroke:var(--gold)}
+  .nb-dark .nodes .dot{fill:var(--gold)}
+  /* Proof becomes a light section */
+  .proof{background:var(--linen);color:var(--body)}
+  .proof h2{color:var(--ink)}
+  .proof .stats{background:var(--line);border-color:var(--line)}
+  .proof .stat{background:#fff}
+  .proof .stat .n{color:var(--gold-dk)}
+  .proof .stat .n b{color:var(--ink)}
+  .proof .stat .l{color:var(--muted)}
+  .proof .track-label{color:var(--gold-txt)}
+  .proof .sectors li{color:var(--body);background:#fff;border-color:rgba(184,148,93,.45)}
+  .nb-ink{background:var(--ink)}.nb-ink .nodes circle{fill:var(--ink);stroke:var(--gold)}
+  .nb-ink .edges line,.nb-ink .links line{stroke:var(--gold)}.nb-ink .nodes .dot{fill:var(--gold)}
+  .nb-mobile{display:none}
+  @media(max-width:900px){.hero-art{display:none}.nb-mobile{display:block}.hero{padding-bottom:20px;background:linear-gradient(180deg,#232326 0%,var(--ink) 100%)}.chain-sec{padding-top:36px}}
+  /* MOBILE COLLAPSIBLE CARDS */
+  @media(max-width:640px){
+    .clp{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+    .clp::after{content:"";position:absolute;top:22px;right:20px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(184,148,93,.55);
+      background:linear-gradient(var(--gold-dk),var(--gold-dk)) center/11px 1.6px no-repeat,linear-gradient(var(--gold-dk),var(--gold-dk)) center/1.6px 11px no-repeat;transition:transform .25s}
+    .clp.open::after{transform:rotate(45deg)}
+    .sec-dark .feat.clp::after{border-color:rgba(212,177,124,.6);background:linear-gradient(var(--gold),var(--gold)) center/11px 1.6px no-repeat,linear-gradient(var(--gold),var(--gold)) center/1.6px 11px no-repeat}
+    .feat.clp::after,.cap.clp::after{top:12px;right:0}
+    .clp h3{padding-right:34px}
+    .clp:not(.open) > p,.clp:not(.open) .meta,.clp:not(.open) .chips,.cap.clp:not(.open) p{display:none}
+    .feat.clp{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center}
+    .feat.clp .gl{margin:0;width:48px;height:48px;border-radius:13px}.feat.clp .gl svg{width:31px;height:31px}
+    .feat.clp h3{margin:0}.feat.clp > p{grid-column:1/-1;margin-top:12px}
+    .grid3{gap:18px}
+    .caps.caps4{gap:18px}
+    .cap.clp{align-items:center}.cap.clp h3{margin:0}
+    .card.clp:not(.open){padding-top:20px;padding-bottom:20px}
+    .card.clp:not(.open) h3{margin-bottom:0}
+    .cards{gap:14px}
+  }
+  /* PULL QUOTE + STRENGTH LIST */
+  .pullq{border-left:3px solid var(--gold);padding:2px 0 2px 18px;margin:18px 0 4px;font-size:18px;line-height:1.45;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+
+
+  /* 4-UP CAPABILITY GRID */
+  .caps.caps4{grid-template-columns:repeat(3,1fr);gap:34px 36px}
+  @media(min-width:821px){.caps4 .cap{flex-direction:column}}
+  @media(max-width:820px){.caps.caps4{grid-template-columns:1fr}}
+  .caps4 .cap p{font-size:15px}
+  .caps4 .cap .qual{display:block;margin-top:9px;font-size:14px;color:var(--muted)}
+  .sec-head p.aud{margin-top:18px;font-size:15.5px;color:var(--body);padding-left:16px;border-left:2px solid var(--line)}
+
+  /* SCROLL BUTTONS */
+  .jump{position:fixed;right:20px;bottom:22px;z-index:60;display:flex;flex-direction:column;gap:10px}
+  .jump a{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--ink);border:1.5px solid var(--gold);color:var(--gold);box-shadow:0 8px 20px rgba(0,0,0,.25);transition:opacity .2s,transform .2s,background .2s,color .2s}
+  .jump a:hover{background:var(--gold);color:var(--ink)}
+  .jump a.off{opacity:0;pointer-events:none;transform:translateY(6px)}
+  .jump svg{width:18px;height:18px}
+  @media(max-width:640px){.jump{right:14px;bottom:16px}.jump a{width:40px;height:40px}}
+  /* NETWORK BAND (What I do → Services) */
+  section.blk.pre-band{padding-bottom:26px}
+  #services{padding-top:30px}
+  .netband{max-width:1080px;margin:0 auto;padding:0 30px}
+  .netband.nb-flip svg{transform:scaleX(-1)}
+  .netband svg{width:100%;height:auto;display:block;overflow:visible}
+  @media(max-width:640px){.netband svg{height:96px}}
+  .netband .edges line{stroke:var(--gold-dk);stroke-width:1.1;opacity:.6;stroke-dasharray:200;stroke-dashoffset:200}
+  .netband .links line{stroke:var(--gold-dk);stroke-width:1;stroke-dasharray:3 6;opacity:0}
+  .netband .nodes circle{fill:var(--linen);stroke:var(--gold-dk);stroke-width:1.6;opacity:0}
+  .netband .nodes .dot{fill:var(--gold-dk);stroke:none}
+  .netband .nodes .ring{fill:none;stroke:var(--gold);stroke-width:1;opacity:0}
+  .netband.in .edges line{animation:smbDraw2mcn7 1.4s ease-out forwards}
+  .netband.in .edges line:nth-child(2n){animation-delay:.2s}
+  .netband.in .edges line:nth-child(3n){animation-delay:.4s}
+  .netband.in .nodes circle{animation:smbFade2mcn7 .6s ease-out .7s forwards}
+  .netband.in .links line{animation:smbFade2mcn7 1s ease-out 1.3s forwards}
+  .netband.in .nodes .ring{animation:smbRingBand 4.5s ease-in-out 1.8s infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes smbRingBand{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.55;transform:scale(1.25)}}
+  @media(prefers-reduced-motion:reduce){.netband *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}.netband .edges line{opacity:.6!important}.netband .nodes .ring{opacity:.35!important}}
+</style>
+<style>
+  /* mapping page */
+  .mhero{padding:72px 0 60px}
+  .mhero h1{max-width:20ch}
+  .mhero .sub{font-size:18px;line-height:1.7;color:#cfc7bb;max-width:60ch;margin:0 0 28px}
+  .demo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:22px;align-items:start}
+  @media(max-width:860px){.demo{grid-template-columns:minmax(0,1fr)}}
+  .demo svg{display:block;width:100%;height:auto}
+  .dv{stroke:#fff;stroke-width:2;cursor:pointer;transition:fill .15s}
+  .dv.s0{fill:#efe9df}.dv.s1{fill:#e8d2a0}.dv.s2{fill:#b8945d}
+  .dv:hover,.dv:focus-visible,.dv.on{fill:var(--ink)!important;outline:none}
+  .dnum{font-family:var(--sans);font-weight:800;fill:var(--ink);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+  .dnum.on{fill:var(--gold)}
+  .wedge{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round;pointer-events:none}
+  .slab{font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;fill:var(--muted);text-anchor:middle}
+  .elab{font-family:var(--sans);font-weight:700;font-size:12px;fill:var(--ink);text-anchor:middle;dominant-baseline:central;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+  .panel{display:grid;gap:14px}
+  .pcard{border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--linen)}
+  .pcard h3{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-txt);margin-bottom:8px}
+  .rnum{font-size:38px;font-weight:800;color:var(--ink);line-height:1}
+  .rsub{font-size:14px;color:var(--muted);margin-top:4px}
+  .sts{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .sts li{font-size:13px;font-weight:600;padding:3px 9px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--body)}
+  .chips{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+  .chip{font-family:var(--sans);font-weight:700;font-size:14px;padding:7px 0;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);cursor:pointer}
+  .chip:hover{border-color:var(--gold-dk)}
+  .chip.on{background:var(--ink);border-color:var(--ink);color:var(--gold)}
+  .chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .key{display:grid;gap:7px;font-size:13.5px}
+  .key span{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:8px;vertical-align:-2px}
+  .demo-note{font-size:13px;color:var(--muted);margin-top:14px;max-width:80ch}
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:820px){.feats{grid-template-columns:1fr}}
+  .feat-c{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px}
+  .feat-c h3{font-size:18px;margin-bottom:8px}
+  .feat-c p{font-size:15.5px;color:var(--body)}
+  .cmp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15.5px}
+  .cmp th,.cmp td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+  .cmp th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-txt)}
+  .cmp td:first-child{font-weight:700;color:var(--ink);width:30%}
+  .faq{display:grid;gap:14px;max-width:78ch}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px}
+  .faq summary{font-weight:700;color:var(--ink);cursor:pointer;font-size:16.5px}
+  .faq p{margin-top:10px;font-size:15.5px}
+  .tablewrap{overflow-x:auto}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Service","@id":"https://shirahbrown.com/mapping#service","identifier":"smb-gyeam","name":"Precinct, ward & division walk maps","serviceType":"Campaign walk maps and canvassing maps","description":"Interactive precinct, ward and division walk maps for campaigns, canvassing and door-knocking, built from official boundary data.","areaServed":[{"@type":"City","name":"Philadelphia"},{"@type":"State","name":"Pennsylvania"}],"provider":{"@id":"https://shirahbrown.com/#shirah"},"url":"https://shirahbrown.com/mapping"},
+ {"@type":"WebPage","@id":"https://shirahbrown.com/mapping#webpage","url":"https://shirahbrown.com/mapping","name":"Precinct, Ward & Division Walk Maps for Campaigns","about":{"@id":"https://shirahbrown.com/mapping#service"},"isPartOf":{"@id":"https://shirahbrown.com/#website"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shirahbrown.com/"},{"@type":"ListItem","position":2,"name":"Mapping","item":"https://shirahbrown.com/mapping"}]}}
+]}
+</script>
+</head>
+<body data-rv="curpx">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img src="assets/logo-smb-shirah.png" alt="SMB · Shirah M. Brown" width="48" height="48">
+      <div class="wm">Shirah Brown<small>Systems Architecture &amp; Digital Strategy</small></div>
+    </a>
+    <nav>
+      <ul>
+        <li class="hide-m"><a href="/#about">About</a></li>
+        <li class="hide-m"><a href="/#services">Services</a></li>
+        <li class="hide-m"><a href="/#work">Work</a></li>
+        <li class="hide-m"><a href="/#proof">Proof</a></li>
+        <li><a class="btn btn-solid" href="mailto:shirah.m.brown@outlook.com">Let's talk</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero mhero" id="main">
+  <div class="wrap">
+    <div class="eyebrow">Mapping &middot; Philadelphia &amp; Pennsylvania</div>
+    <h1>Precinct &amp; division walk maps, built to use.</h1>
+    <p class="sub">Interactive walk maps for campaigns, canvassing teams and civic groups: every ward, division and precinct drawn from official boundary data with each boundary street named, with door-knocking turf and status your team can tap, not just print.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="#demo">Try the live map &rarr;</a>
+      <a class="btn btn-onDark" href="mailto:shirah.m.brown@outlook.com?subject=Walk%20maps">Ask about maps</a>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Live demo</div>
+      <div class="goldrule"></div>
+      <h2>Tap a division. See its streets.</h2>
+      <p>A working ward map: 17 divisions, each boundary drawn from the City of Philadelphia&rsquo;s official division map. Tap any division, or pick its number, to see the streets on its edges.</p>
+    </div>
+    <div class="demo">
+      <div><svg id="map" viewBox="0 0 900 460" role="img" aria-label="Interactive map of a Philadelphia ward and its 17 voting divisions"></svg></div>
+      <div class="panel">
+        <div class="pcard" aria-live="polite">
+          <h3>Selected division</h3>
+          <div class="rnum" id="r-num">4</div>
+          <div class="rsub" id="r-sub">Division 4 of 17 &middot; <span id="r-state"></span></div>
+          <ul class="sts" id="r-streets"></ul>
+        </div>
+        <div class="pcard">
+          <h3>Find a division</h3>
+          <div class="chips" id="chips"></div>
+        </div>
+        <div class="pcard">
+          <h3>Sample turf status</h3>
+          <div class="key">
+            <div><span style="background:#efe9df"></span>Not started</div>
+            <div><span style="background:#e8d2a0"></span>In progress</div>
+            <div><span style="background:#b8945d"></span>Doors done</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="demo-note">Shading is sample data for the demo. Boundaries are from OpenDataPhilly, simplified for display. Live versions connect to your own lists so status updates as teams report in.</p>
+  </div>
+</section>
+
+<section class="blk sec-white">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What you get</div>
+      <div class="goldrule"></div>
+      <h2>Walk maps for campaigns &amp; canvassing.</h2>
+      <p>Maps people use on the doorstep and in the field office, not a PDF in a drawer.</p>
+    </div>
+    <div class="feats">
+      <div class="feat-c"><h3>Precinct &amp; division maps</h3><p>Every ward, division or precinct in your district, drawn to the official boundaries, with the streets on every edge labeled.</p></div>
+      <div class="feat-c"><h3>Door-knocking turf</h3><p>Turf cut by division or block, shaded by status, so a canvass lead sees what&rsquo;s covered and what&rsquo;s left at a glance.</p></div>
+      <div class="feat-c"><h3>Interactive, on any phone</h3><p>Tap a division to see its streets, polling place or volunteers. Works on a phone at the door and prints clean for packets.</p></div>
+      <div class="feat-c"><h3>Built from official data</h3><p>Boundaries come from the City&rsquo;s and Commonwealth&rsquo;s own ward, division and precinct files, not traced from a screenshot.</p></div>
+      <div class="feat-c"><h3>Connected to your lists</h3><p>Seat status, contact counts or results joined to each division, updated on a schedule instead of by hand.</p></div>
+      <div class="feat-c"><h3>Yours to keep</h3><p>Delivered as a page you own or embed on your site, with the data files and how to update them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Static vs. live</div>
+      <div class="goldrule"></div>
+      <h2>Why an interactive walk map.</h2>
+    </div>
+    <div class="tablewrap">
+    <table class="cmp">
+      <tr><th></th><th>Static map image</th><th>Interactive walk map</th></tr>
+      <tr><td>Find a division</td><td>Scan the picture</td><td>Tap it, or pick its number</td></tr>
+      <tr><td>Street names</td><td>Fixed at print size</td><td>Shown for the division you select</td></tr>
+      <tr><td>Turf &amp; status</td><td>Redrawn by hand</td><td>Shaded from your data</td></tr>
+      <tr><td>On a phone</td><td>Pinch and zoom an image</td><td>Built for a phone at the door</td></tr>
+      <tr><td>Updates</td><td>A new file each time</td><td>The page updates itself</td></tr>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section class="blk sec-white">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Questions</div>
+      <div class="goldrule"></div>
+      <h2>Maps, wards &amp; divisions.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>What is a walk map?</summary><p>A walk map shows a canvasser exactly which streets and blocks to cover, usually one division or precinct at a time. A good one names every street on the boundary so nobody walks the wrong side.</p></details>
+      <details><summary>What&rsquo;s the difference between a ward, a division and a precinct?</summary><p>In Philadelphia, the city is split into 66 wards, and each ward into divisions; a division is the city&rsquo;s word for a voting precinct. Elsewhere in Pennsylvania the same unit is usually called a precinct or district.</p></details>
+      <details><summary>Can you map my whole district?</summary><p>Yes. Ward, division and precinct boundaries come from official files, so a State House, State Senate or council district can be mapped division by division.</p></details>
+      <details><summary>Do the maps work for door-knocking teams?</summary><p>That&rsquo;s what they&rsquo;re for: turf by division or block, status shading, and a view that works on a phone at the door, with a clean print version for packets.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="blk cta" id="contact">
+  <div class="wrap">
+    <div class="goldrule"></div>
+    <h2>Need maps for your district?</h2>
+    <p>Tell me the district and what your teams need on the doorstep.</p>
+    <div class="cta-row" style="margin-top:26px"><a class="btn btn-solid" href="mailto:shirah.m.brown@outlook.com?subject=Walk%20maps">Email me &rarr;</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap fin">
+    <img class="flogo" src="assets/logo-smb-shirah.png" alt="SMB · Shirah M. Brown" width="72" height="72">
+    <div class="fcopy">© <span id="yr">2026</span> Shirah M. Brown. All rights reserved.</div>
+    <div class="fsoc">
+      <a href="https://www.linkedin.com/in/shirahbrown/" target="_blank" rel="noopener" aria-label="Shirah Brown on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.83v1.5h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13v5.43h-4v-4.82c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.9h-4v-11Z"/></svg></a>
+      <a href="mailto:shirah.m.brown@outlook.com" aria-label="Email Shirah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<div class="jump">
+  <a href="#top" id="toTop" class="off" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></a>
+  <a href="#contact" id="toBottom" aria-label="Next section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+</div>
+
+<script>
+  // There is no spoon. (smb-6wv77)
+  var _k='6wv77';
+(function(){
+  var up=document.getElementById('toTop'),dn=document.getElementById('toBottom');
+  var secs=[].slice.call(document.querySelectorAll('main section, body > section, footer'));
+  var nav=72;
+  function nextSec(){
+    var y=window.scrollY+nav+8;
+    for(var i=0;i<secs.length;i++){ if(secs[i].getBoundingClientRect().top+window.scrollY>y) return secs[i]; }
+    return null;
+  }
+  function upd(){
+    var y=window.scrollY,max=document.documentElement.scrollHeight-window.innerHeight;
+    up.classList.toggle('off',y<400);
+    dn.classList.toggle('off',y>max-40||!nextSec());
+  }
+  up.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0});});
+  dn.addEventListener('click',function(e){
+    e.preventDefault();var t=nextSec();
+    if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-nav+1});
+  });
+  window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
+  var yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();
+})();
+</script>
+
+<script>
+(function(){
+const DIVS = {
+  "3001": [[-75.17033,39.94425],[-75.16718,39.94386],[-75.16759,39.94203],[-75.17231,39.94261],[-75.17191,39.94445],[-75.17033,39.94425]],
+  "3002": [[-75.16558,39.94367],[-75.16542,39.94366],[-75.16606,39.94081],[-75.17096,39.94141],[-75.17074,39.94242],[-75.16759,39.94203],[-75.16718,39.94386],[-75.16558,39.94367]],
+  "3003": [[-75.17011,39.94528],[-75.1652,39.94466],[-75.16542,39.94366],[-75.17191,39.94445],[-75.1717,39.94547],[-75.17011,39.94528]],
+  "3004": [[-75.16896,39.94116],[-75.16606,39.94081],[-75.16671,39.93785],[-75.17003,39.93827],[-75.16939,39.94122],[-75.16896,39.94116]],
+  "3005": [[-75.17032,39.94134],[-75.16939,39.94122],[-75.17003,39.93827],[-75.17318,39.93865],[-75.1727,39.94083],[-75.17113,39.94064],[-75.17096,39.94141],[-75.17032,39.94134]],
+  "3006": [[-75.17211,39.94359],[-75.17231,39.94261],[-75.17074,39.94242],[-75.17113,39.94064],[-75.17427,39.94103],[-75.17367,39.94378],[-75.17211,39.94359]],
+  "3007": [[-75.17755,39.94618],[-75.1717,39.94547],[-75.17211,39.94359],[-75.17717,39.94422],[-75.17682,39.94582],[-75.1784,39.94602],[-75.17835,39.94628],[-75.17755,39.94618]],
+  "3008": [[-75.18403,39.947],[-75.17835,39.94628],[-75.1784,39.94602],[-75.17682,39.94582],[-75.17699,39.94509],[-75.18569,39.94617],[-75.18688,39.94693],[-75.18637,39.94727],[-75.18403,39.947]],
+  "3009": [[-75.17367,39.94378],[-75.17427,39.94103],[-75.17776,39.94147],[-75.17738,39.94324],[-75.17545,39.943],[-75.17524,39.94398],[-75.17367,39.94378]],
+  "3010": [[-75.1727,39.94083],[-75.17318,39.93865],[-75.17631,39.93903],[-75.17606,39.94026],[-75.17448,39.94007],[-75.17427,39.94103],[-75.1727,39.94083]],
+  "3011": [[-75.17776,39.94147],[-75.17427,39.94103],[-75.17448,39.94007],[-75.17606,39.94026],[-75.17631,39.93903],[-75.17825,39.93928],[-75.17798,39.94049],[-75.17957,39.94069],[-75.17947,39.94118],[-75.17935,39.94167],[-75.17776,39.94147]],
+  "3012": [[-75.181,39.94187],[-75.17935,39.94167],[-75.17957,39.94069],[-75.17798,39.94049],[-75.17825,39.93928],[-75.18314,39.9399],[-75.18265,39.94207],[-75.181,39.94187]],
+  "3013": [[-75.18248,39.94284],[-75.1776,39.94224],[-75.17776,39.94147],[-75.18265,39.94207],[-75.18287,39.9411],[-75.18467,39.94133],[-75.18448,39.94228],[-75.18337,39.94296],[-75.18248,39.94284]],
+  "3014": [[-75.17738,39.94324],[-75.1776,39.94224],[-75.18337,39.94296],[-75.1823,39.94364],[-75.18236,39.9434],[-75.18074,39.94317],[-75.18063,39.94365],[-75.17738,39.94324]],
+  "3015": [[-75.18074,39.94317],[-75.18236,39.9434],[-75.1823,39.94364],[-75.18061,39.94464],[-75.17524,39.94398],[-75.17545,39.943],[-75.18063,39.94365],[-75.18074,39.94317]],
+  "3016": [[-75.18617,39.94641],[-75.18569,39.94617],[-75.17699,39.94509],[-75.17717,39.94422],[-75.18884,39.94572],[-75.18688,39.94693],[-75.18617,39.94641]],
+  "3017": [[-75.18571,39.94529],[-75.18061,39.94464],[-75.18448,39.94228],[-75.18467,39.94133],[-75.18287,39.9411],[-75.18314,39.9399],[-75.18745,39.94037],[-75.18901,39.93943],[-75.19353,39.94224],[-75.19269,39.9425],[-75.19211,39.94283],[-75.18884,39.94572],[-75.18571,39.94529]]
+};
+const WARD = [[-75.18403,39.947],[-75.1652,39.94466],[-75.16671,39.93785],[-75.18745,39.94037],[-75.18901,39.93943],[-75.19353,39.94224],[-75.19224,39.94273],[-75.18637,39.94727],[-75.18403,39.947]];
+const STREETS = {"3001": ["South St", "15th St", "Fitzwater St", "18th St"], "3002": ["Broad St", "Catharine St", "17th St", "Fitzwater St", "15th St", "South St"], "3003": ["Lombard St", "Broad St", "South St", "18th St"], "3004": ["Catharine St", "Broad St", "Washington Ave", "16th St"], "3005": ["Catharine St", "16th St", "Washington Ave", "18th St", "Christian St", "17th St"], "3006": ["18th St", "Fitzwater St", "17th St", "Christian St", "19th St", "Bainbridge St"], "3007": ["Lombard St", "18th St", "Bainbridge St", "21st St", "Tryon St"], "3008": ["Lombard St", "Tryon St", "21st St", "South St", "Schuylkill River"], "3009": ["19th St", "Christian St", "21st St", "Fitzwater St", "20th St", "Bainbridge St"], "3010": ["18th St", "Washington Ave", "20th St", "Carpenter St", "19th St", "Christian St"], "3011": ["Christian St", "19th St", "Carpenter St", "20th St", "Washington Ave", "21st St", "22nd St"], "3012": ["Christian St", "22nd St", "Carpenter St", "21st St", "Washington Ave", "24th St"], "3013": ["Catharine St", "21st St", "Christian St", "24th St", "Carpenter St", "25th St", "Grays Ferry Ave"], "3014": ["21st St", "Catharine St", "Grays Ferry Ave", "St. Albans St", "23rd St", "Fitzwater St"], "3015": ["St. Albans St", "Grays Ferry Ave", "Bainbridge St", "20th St", "Fitzwater St", "23rd St"], "3016": ["Schuylkill River", "South St", "21st St", "Bainbridge St"], "3017": ["Bainbridge St", "Grays Ferry Ave", "25th St", "Carpenter St", "24th St", "Washington Ave", "Ellsworth St", "Schuylkill River"]};
+const EDGE_LABELS = {"3001": [[[-75.17033, 39.94425], [-75.16718, 39.94386], "South St"], [[-75.16718, 39.94386], [-75.16759, 39.94203], "15th St"], [[-75.16759, 39.94203], [-75.17231, 39.94261], "Fitzwater St"], [[-75.17231, 39.94261], [-75.17191, 39.94445], "18th St"]], "3002": [[[-75.16542, 39.94366], [-75.16606, 39.94081], "Broad St"], [[-75.16606, 39.94081], [-75.17096, 39.94141], "Catharine St"], [[-75.17096, 39.94141], [-75.17074, 39.94242], "17th St"], [[-75.17074, 39.94242], [-75.16759, 39.94203], "Fitzwater St"], [[-75.16759, 39.94203], [-75.16718, 39.94386], "15th St"], [[-75.16718, 39.94386], [-75.16558, 39.94367], "South St"]], "3003": [[[-75.17011, 39.94528], [-75.1652, 39.94466], "Lombard St"], [[-75.1652, 39.94466], [-75.16542, 39.94366], "Broad St"], [[-75.16542, 39.94366], [-75.17191, 39.94445], "South St"], [[-75.17191, 39.94445], [-75.1717, 39.94547], "18th St"]], "3004": [[[-75.16896, 39.94116], [-75.16606, 39.94081], "Catharine St"], [[-75.16606, 39.94081], [-75.16671, 39.93785], "Broad St"], [[-75.16671, 39.93785], [-75.17003, 39.93827], "Washington Ave"], [[-75.17003, 39.93827], [-75.16939, 39.94122], "16th St"]], "3005": [[[-75.17032, 39.94134], [-75.16939, 39.94122], "Catharine St"], [[-75.16939, 39.94122], [-75.17003, 39.93827], "16th St"], [[-75.17003, 39.93827], [-75.17318, 39.93865], "Washington Ave"], [[-75.17318, 39.93865], [-75.1727, 39.94083], "18th St"], [[-75.1727, 39.94083], [-75.17113, 39.94064], "Christian St"], [[-75.17113, 39.94064], [-75.17096, 39.94141], "17th St"]], "3006": [[[-75.17211, 39.94359], [-75.17231, 39.94261], "18th St"], [[-75.17231, 39.94261], [-75.17074, 39.94242], "Fitzwater St"], [[-75.17074, 39.94242], [-75.17113, 39.94064], "17th St"], [[-75.17113, 39.94064], [-75.17427, 39.94103], "Christian St"], [[-75.17427, 39.94103], [-75.17367, 39.94378], "19th St"], [[-75.17367, 39.94378], [-75.17211, 39.94359], "Bainbridge St"]], "3007": [[[-75.17755, 39.94618], [-75.1717, 39.94547], "Lombard St"], [[-75.1717, 39.94547], [-75.17211, 39.94359], "18th St"], [[-75.17211, 39.94359], [-75.17717, 39.94422], "Bainbridge St"], [[-75.17717, 39.94422], [-75.17682, 39.94582], "21st St"], [[-75.17682, 39.94582], [-75.1784, 39.94602], "Tryon St"]], "3008": [[[-75.18403, 39.947], [-75.17835, 39.94628], "Lombard St"], [[-75.1784, 39.94602], [-75.17682, 39.94582], "Tryon St"], [[-75.17682, 39.94582], [-75.17699, 39.94509], "21st St"], [[-75.17699, 39.94509], [-75.18569, 39.94617], "South St"], [[-75.18569, 39.94617], [-75.18688, 39.94693], "Schuylkill River"]], "3009": [[[-75.17367, 39.94378], [-75.17427, 39.94103], "19th St"], [[-75.17427, 39.94103], [-75.17776, 39.94147], "Christian St"], [[-75.17776, 39.94147], [-75.17738, 39.94324], "21st St"], [[-75.17738, 39.94324], [-75.17545, 39.943], "Fitzwater St"], [[-75.17545, 39.943], [-75.17524, 39.94398], "20th St"], [[-75.17524, 39.94398], [-75.17367, 39.94378], "Bainbridge St"]], "3010": [[[-75.1727, 39.94083], [-75.17318, 39.93865], "18th St"], [[-75.17318, 39.93865], [-75.17631, 39.93903], "Washington Ave"], [[-75.17631, 39.93903], [-75.17606, 39.94026], "20th St"], [[-75.17606, 39.94026], [-75.17448, 39.94007], "Carpenter St"], [[-75.17448, 39.94007], [-75.17427, 39.94103], "19th St"], [[-75.17427, 39.94103], [-75.1727, 39.94083], "Christian St"]], "3011": [[[-75.17776, 39.94147], [-75.17427, 39.94103], "Christian St"], [[-75.17427, 39.94103], [-75.17448, 39.94007], "19th St"], [[-75.17798, 39.94049], [-75.17957, 39.94069], "Carpenter St"], [[-75.17606, 39.94026], [-75.17631, 39.93903], "20th St"], [[-75.17631, 39.93903], [-75.17825, 39.93928], "Washington Ave"], [[-75.17825, 39.93928], [-75.17798, 39.94049], "21st St"], [[-75.17957, 39.94069], [-75.17947, 39.94118], "22nd St"]], "3012": [[[-75.181, 39.94187], [-75.17935, 39.94167], "Christian St"], [[-75.17935, 39.94167], [-75.17957, 39.94069], "22nd St"], [[-75.17957, 39.94069], [-75.17798, 39.94049], "Carpenter St"], [[-75.17798, 39.94049], [-75.17825, 39.93928], "21st St"], [[-75.17825, 39.93928], [-75.18314, 39.9399], "Washington Ave"], [[-75.18314, 39.9399], [-75.18265, 39.94207], "24th St"]], "3013": [[[-75.18248, 39.94284], [-75.1776, 39.94224], "Catharine St"], [[-75.1776, 39.94224], [-75.17776, 39.94147], "21st St"], [[-75.17776, 39.94147], [-75.18265, 39.94207], "Christian St"], [[-75.18265, 39.94207], [-75.18287, 39.9411], "24th St"], [[-75.18287, 39.9411], [-75.18467, 39.94133], "Carpenter St"], [[-75.18467, 39.94133], [-75.18448, 39.94228], "25th St"], [[-75.18448, 39.94228], [-75.18337, 39.94296], "Grays Ferry Ave"]], "3014": [[[-75.17738, 39.94324], [-75.1776, 39.94224], "21st St"], [[-75.1776, 39.94224], [-75.18337, 39.94296], "Catharine St"], [[-75.18337, 39.94296], [-75.1823, 39.94364], "Grays Ferry Ave"], [[-75.18236, 39.9434], [-75.18074, 39.94317], "St. Albans St"], [[-75.18074, 39.94317], [-75.18063, 39.94365], "23rd St"], [[-75.18063, 39.94365], [-75.17738, 39.94324], "Fitzwater St"]], "3015": [[[-75.18074, 39.94317], [-75.18236, 39.9434], "St. Albans St"], [[-75.1823, 39.94364], [-75.18061, 39.94464], "Grays Ferry Ave"], [[-75.18061, 39.94464], [-75.17524, 39.94398], "Bainbridge St"], [[-75.17524, 39.94398], [-75.17545, 39.943], "20th St"], [[-75.17545, 39.943], [-75.18063, 39.94365], "Fitzwater St"], [[-75.18063, 39.94365], [-75.18074, 39.94317], "23rd St"]], "3016": [[[-75.18884, 39.94572], [-75.18688, 39.94693], "Schuylkill River"], [[-75.18569, 39.94617], [-75.17699, 39.94509], "South St"], [[-75.17699, 39.94509], [-75.17717, 39.94422], "21st St"], [[-75.17717, 39.94422], [-75.18884, 39.94572], "Bainbridge St"]], "3017": [[[-75.18571, 39.94529], [-75.18061, 39.94464], "Bainbridge St"], [[-75.18061, 39.94464], [-75.18448, 39.94228], "Grays Ferry Ave"], [[-75.18448, 39.94228], [-75.18467, 39.94133], "25th St"], [[-75.18467, 39.94133], [-75.18287, 39.9411], "Carpenter St"], [[-75.18287, 39.9411], [-75.18314, 39.9399], "24th St"], [[-75.18314, 39.9399], [-75.18745, 39.94037], "Washington Ave"], [[-75.18901, 39.93943], [-75.19353, 39.94224], "Ellsworth St"], [[-75.19211, 39.94283], [-75.18884, 39.94572], "Schuylkill River"]]};
+const SAMPLE = {"3001":2,"3002":1,"3003":2,"3004":1,"3005":0,"3006":2,"3007":1,"3008":0,"3009":2,"3010":0,"3011":1,"3012":0,"3013":1,"3014":2,"3015":0,"3016":1,"3017":0};
+const STATE = ["Not started","In progress","Doors done"];
+const NS = "http://www.w3.org/2000/svg", svg = document.getElementById("map");
+const W = 900, H = 460, PAD = 56;
+const all = Object.values(DIVS).flat();
+const lat0 = 39.942, kx = Math.cos(lat0 * Math.PI / 180);
+const xs = all.map(p => p[0] * kx), ys = all.map(p => p[1]);
+const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+const s = Math.min((W - 2 * PAD) / (maxX - minX), (H - 2 * PAD) / (maxY - minY));
+const offX = (W - (maxX - minX) * s) / 2, offY = (H - (maxY - minY) * s) / 2;
+const P = ([lon, lat]) => [offX + (lon * kx - minX) * s, offY + (maxY - lat) * s];
+const pathOf = r => r.map((p, i) => (i ? "L" : "M") + P(p).map(n => n.toFixed(1)).join(",")).join("") + "Z";
+function el(t, a, par) { const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); (par || svg).appendChild(n); return n; }
+function centroid(r) { const pts = r.map(P); let A = 0, cx = 0, cy = 0; for (let i = 0; i < pts.length - 1; i++) { const [x1, y1] = pts[i], [x2, y2] = pts[i + 1], f = x1 * y2 - x2 * y1; A += f; cx += (x1 + x2) * f; cy += (y1 + y2) * f; } A /= 2; return { x: cx / (6 * A), y: cy / (6 * A), area: Math.abs(A) }; }
+const keys = Object.keys(DIVS).sort(), shapes = {}, nums = {}, chips = {};
+keys.forEach(k => {
+  const n = parseInt(k.slice(2), 10);
+  const sh = el("path", { d: pathOf(DIVS[k]), class: "dv s" + SAMPLE[k], tabindex: "0", role: "button", "aria-label": "Division " + n });
+  sh.addEventListener("click", () => select(k));
+  sh.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(k); } });
+  shapes[k] = sh;
+});
+el("path", { d: pathOf(WARD), class: "wedge" });
+keys.forEach(k => { const c = centroid(DIVS[k]), size = Math.max(14, Math.min(26, Math.sqrt(c.area) / 4.2)); const t = el("text", { x: c.x.toFixed(1), y: c.y.toFixed(1), class: "dnum", "font-size": size.toFixed(0) }); t.textContent = parseInt(k.slice(2), 10); nums[k] = t; });
+function along(a, b, text, off) { const [x1, y1] = P(a), [x2, y2] = P(b); let ang = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI; if (ang > 90) ang -= 180; if (ang < -90) ang += 180; const r = ang * Math.PI / 180, mx = (x1 + x2) / 2 - Math.sin(r) * off, my = (y1 + y2) / 2 + Math.cos(r) * off; const t = el("text", { x: mx.toFixed(1), y: my.toFixed(1), class: "slab", transform: `rotate(${ang.toFixed(1)} ${mx.toFixed(1)} ${my.toFixed(1)})`, "dominant-baseline": "central" }); t.textContent = text; }
+along(WARD[0], WARD[1], "Lombard St", -16); along(WARD[1], WARD[2], "Broad St", 16); along(WARD[2], WARD[3], "Washington Ave", 18); along(WARD[4], WARD[5], "Ellsworth St", 16); along(WARD[6], WARD[7], "Schuylkill River", -18);
+const lab = el("g", {});
+function edges(k) { lab.innerHTML = ""; EDGE_LABELS[k].forEach(([a, b, name]) => { if (["Schuylkill River", "Lombard St", "Broad St", "Washington Ave", "Ellsworth St"].includes(name)) return; const [x1, y1] = P(a), [x2, y2] = P(b); let ang = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI; if (ang > 90) ang -= 180; if (ang < -90) ang += 180; const mx = ((x1 + x2) / 2).toFixed(1), my = ((y1 + y2) / 2).toFixed(1); const t = el("text", { x: mx, y: my, class: "elab", transform: `rotate(${ang.toFixed(1)} ${mx} ${my})` }, lab); t.textContent = name; }); }
+const box = document.getElementById("chips");
+keys.forEach(k => { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = parseInt(k.slice(2), 10); b.setAttribute("aria-label", "Division " + b.textContent); b.addEventListener("click", () => select(k)); box.appendChild(b); chips[k] = b; });
+function select(k) {
+  edges(k);
+  keys.forEach(j => { const on = j === k; shapes[j].classList.toggle("on", on); nums[j].classList.toggle("on", on); chips[j].classList.toggle("on", on); chips[j].setAttribute("aria-pressed", on ? "true" : "false"); });
+  keys.forEach(j => svg.appendChild(nums[j])); svg.querySelectorAll(".slab").forEach(n => svg.appendChild(n)); svg.appendChild(lab);
+  const n = parseInt(k.slice(2), 10);
+  document.getElementById("r-num").textContent = n;
+  document.getElementById("r-sub").firstChild.textContent = "Division " + n + " of 17 \u00b7 ";
+  document.getElementById("r-state").textContent = STATE[SAMPLE[k]];
+  const ul = document.getElementById("r-streets"); ul.innerHTML = ""; STREETS[k].forEach(x => { const li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
+}
+select("3004");
+})();
+</script>
+</body>
+</html>
