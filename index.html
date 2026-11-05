@@ -117,7 +117,8 @@
 
   /* HUMAN ANCHOR */
   .anchor{background:var(--cream)}
-  .anchor-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center}
+  .anchor-grid{display:grid;grid-template-columns:220px 1fr;gap:52px;align-items:center}
+  section.anchor{padding:64px 0 40px}
   @media(max-width:820px){.anchor-grid{grid-template-columns:1fr;gap:30px}}
   .portrait{aspect-ratio:4/5;border-radius:14px;background:linear-gradient(160deg,#2a2a2e,#161618);position:relative;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.28);border:1px solid rgba(212,177,124,.25)}
   .portrait-wrap{position:relative;isolation:isolate}
@@ -279,6 +280,16 @@
     .card p{margin-top:12px}
   }
 
+  /* RECENT PROJECTS LIST */
+  @media(min-width:641px){
+    #work .wlist{grid-template-columns:1fr;gap:0;border-top:1px solid rgba(212,177,124,.22)}
+    #work .wlist .card{display:grid;grid-template-columns:62px minmax(200px,280px) 1fr;column-gap:28px;grid-template-rows:auto 1fr;align-items:start;background:transparent;border:none;border-bottom:1px solid rgba(212,177,124,.22);border-radius:0;padding:28px 0}
+    #work .wlist .card:hover{transform:none;box-shadow:none}
+    #work .wlist .card .gl{grid-column:1;grid-row:1/3;margin:0}
+    #work .wlist .card .tag{grid-column:2;margin:4px 0 6px}
+    #work .wlist .card h3{grid-column:2;color:#fbf7f1;margin:0}
+    #work .wlist .card p{grid-column:3;grid-row:1/3;margin:0;color:#c3bcb1;font-size:15.5px;line-height:1.65}
+  }
   /* SECTION CONTRAST */
   .sec-white{background:#fff}
   .sec-white .card{background:var(--linen);border-color:transparent}
@@ -318,6 +329,8 @@
     .sec-dark .feat.clp::after{border-color:rgba(212,177,124,.6);background:linear-gradient(var(--gold),var(--gold)) center/11px 1.6px no-repeat,linear-gradient(var(--gold),var(--gold)) center/1.6px 11px no-repeat}
     .feat.clp::after,.cap.clp::after{top:12px;right:0}
     .clp h3{padding-right:34px}
+    .clp .tag{padding-right:34px}
+    .portrait-wrap{max-width:230px}
     .clp:not(.open) > p,.clp:not(.open) .meta,.clp:not(.open) .chips,.cap.clp:not(.open) p{display:none}
     .feat.clp{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center}
     .feat.clp .gl{margin:0;width:48px;height:48px;border-radius:13px}.feat.clp .gl svg{width:31px;height:31px}
@@ -390,8 +403,8 @@
       <ul>
         <li class="hide-m"><a href="#about">About</a></li>
         <li class="hide-m"><a href="#services">Services</a></li>
-        <li class="hide-m"><a href="#work">Work</a></li>
         <li class="hide-m"><a href="#proof">Proof</a></li>
+        <li class="hide-m"><a href="#work">Projects</a></li>
         <li><a class="btn btn-solid" href="mailto:shirah.m.brown@outlook.com">Let's talk</a></li>
       </ul>
     </nav>
@@ -405,9 +418,6 @@
       <div class="bars"><span></span><span></span></div>
       <h1>Systems &amp; digital strategy for organizations in motion.</h1>
       <p class="lead">Most organizations don't need another tool. They need an architecture — strategy, websites, CRM, data and automation, and the operating model that holds them together.</p>
-      <div class="cta-row">
-        <a class="btn btn-solid" href="mailto:shirah.m.brown@outlook.com">Get in touch</a>
-      </div>
     </div>
     <div class="hero-art" aria-hidden="true">
       <svg class="net" id="lattice-e1pkm" viewBox="0 0 560 440" focusable="false">
@@ -496,8 +506,8 @@
         <div class="eyebrow">About</div>
         <div class="goldrule" style="margin:14px 0 16px"></div>
         <h2><span class="hi">Hi, I'm Shirah.</span></h2>
-        <p class="pullq">Good systems create clarity. The best ones make room for people.</p>
-        <p>For fifteen years I've stepped into complex, tangled work — technology, workflows, data, and the processes wrapped around them — and made it move forward with confidence.</p>
+        <p class="pullq">Builder + operator = architect operator.</p>
+        <p>For fifteen years I've stepped into complex, tangled work — technology, workflows, data, and the processes wrapped around them — and made it move forward with confidence. I envision and build complex systems, then bring the operational discipline to run, scale and keep improving them.</p>
         <p>I care as much about the people using a system as the system itself — governance that holds, platforms that scale, decisions that stick, never at the expense of the humans on the other side of the screen. Philadelphia-based; I played Division I lacrosse, which is where I learned to lead under pressure and be the reliable one when it counts.</p>
       </div>
     </div>
@@ -506,63 +516,6 @@
 
 <!-- NETWORK BAND -->
 <div class="netband nb-flip nb-cream" aria-hidden="true">
-  <svg viewBox="0 0 1020 140" preserveAspectRatio="xMidYMid slice" focusable="false">
-    <g class="edges">
-      <line x1="10" y1="78" x2="86" y2="44"/><line x1="86" y1="44" x2="158" y2="92"/><line x1="158" y1="92" x2="240" y2="58"/>
-      <line x1="240" y1="58" x2="308" y2="104"/><line x1="240" y1="58" x2="372" y2="62"/><line x1="158" y1="92" x2="120" y2="126"/>
-      <line x1="200" y1="16" x2="240" y2="58"/><line x1="372" y1="62" x2="440" y2="32"/>
-      <line x1="580" y1="104" x2="652" y2="60"/><line x1="652" y1="60" x2="730" y2="94"/><line x1="730" y1="94" x2="800" y2="42"/>
-      <line x1="800" y1="42" x2="870" y2="86"/><line x1="870" y1="86" x2="944" y2="52"/><line x1="944" y1="52" x2="1010" y2="96"/>
-      <line x1="652" y1="60" x2="690" y2="16"/><line x1="870" y1="86" x2="840" y2="128"/>
-    </g>
-    <g class="links">
-      <line x1="372" y1="62" x2="510" y2="70"/><line x1="440" y1="32" x2="510" y2="70"/>
-      <line x1="510" y1="70" x2="580" y2="104"/><line x1="510" y1="70" x2="652" y2="60"/>
-    </g>
-    <g class="nodes">
-      <circle cx="10" cy="78" r="4"/><circle cx="158" cy="92" r="4.5"/><circle cx="120" cy="126" r="3.5"/><circle cx="200" cy="16" r="3.5"/>
-      <circle cx="308" cy="104" r="4"/><circle cx="440" cy="32" r="4"/><circle cx="580" cy="104" r="4"/><circle cx="690" cy="16" r="3.5"/>
-      <circle cx="730" cy="94" r="4.5"/><circle cx="840" cy="128" r="3.5"/><circle cx="944" cy="52" r="4.5"/><circle cx="1010" cy="96" r="4"/>
-      <circle cx="86" cy="44" r="6"/><circle cx="372" cy="62" r="6"/><circle cx="652" cy="60" r="6"/><circle cx="870" cy="86" r="6"/>
-      <circle cx="240" cy="58" r="8"/><circle cx="800" cy="42" r="8"/>
-      <circle class="dot" cx="240" cy="58" r="2.6"/><circle class="dot" cx="800" cy="42" r="2.6"/>
-      <circle class="ring" cx="510" cy="70" r="20"/>
-      <circle cx="510" cy="70" r="10"/><circle class="dot" cx="510" cy="70" r="3.4"/>
-    </g>
-  </svg>
-</div>
-
-<!-- WHAT I DO -->
-<section class="blk pre-band sec-dark">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">How I work</div>
-      <div class="goldrule"></div>
-      <h2>Builder + operator = architect operator.</h2>
-      <p>I envision and build complex systems, and I bring the operational discipline to execute, scale and keep improving them.</p>
-    </div>
-    <div class="grid3">
-      <div class="feat">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><circle cx="13" cy="13" r="8.5"/><path class="a" d="M19.5 19.5 27 27"/><path class="s" d="M9.5 15.5 13 10l3.5 4.5"/><circle class="n" cx="9.5" cy="15.5" r="1.6"/><circle class="n" cx="13" cy="10" r="1.6"/><circle class="n" cx="16.5" cy="14.5" r="1.6"/></svg></span>
-        <h3>Assess &amp; diagnose</h3>
-        <p>A current-state read on the systems, the data, the workflows and who owns what, including the parts nobody has written down. Then the truth about what's working, what's costing you and what to fix first.</p>
-      </div>
-      <div class="feat">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 4 27 9.5 16 15 5 9.5Z"/><path class="s" d="M5 15.5 16 21l11-5.5"/><path d="M5 21.5 16 27l11-5.5"/><path class="a" d="M16 9.5V27" stroke-dasharray="2 2.4"/><circle class="n" cx="16" cy="9.5" r="1.8"/><circle class="n" cx="16" cy="21" r="1.5"/></svg></span>
-        <h3>Architect &amp; align</h3>
-        <p>Target-state architecture across websites, CRM, engagement platforms, events, integration and identity. How the systems fit together — ownership, data flow, governance — at the scale the organization can actually absorb.</p>
-      </div>
-      <div class="feat">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path class="a" d="M5 26c5 0 4.5-9 10-9s5-7.5 9-7.5"/><circle class="n" cx="5" cy="26" r="1.8"/><circle class="n" cx="15" cy="17" r="1.6"/><path d="M24 16V4h6l-2 2.7 2 2.7h-6"/></svg></span>
-        <h3>Lead &amp; operate</h3>
-        <p>Multi-million-dollar initiatives and executive reporting. I've run the programs, not just advised on them, so the roadmap gets delivered.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NETWORK BAND -->
-<div class="netband nb-dark" aria-hidden="true">
   <svg viewBox="0 0 1020 140" preserveAspectRatio="xMidYMid slice" focusable="false">
     <g class="edges">
       <line x1="10" y1="78" x2="86" y2="44"/><line x1="86" y1="44" x2="158" y2="92"/><line x1="158" y1="92" x2="240" y2="58"/>
@@ -684,53 +637,24 @@
   </svg>
 </div>
 
-<!-- RECENT WORK -->
-<section class="blk work sec-dark" id="work">
+<!-- PROOF -->
+<section class="blk proof" id="proof">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">Recent work</div>
+      <div class="eyebrow">Proof</div>
       <div class="goldrule"></div>
-      <h2>Digital strategy &amp; design, built to run.</h2>
-      <p>A sample of recent work, described by sector.</p>
+      <h2>The shape of the work.</h2>
     </div>
-    <div class="cards">
-      <div class="card">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 12 7 6h18l2 6"/><path class="a" d="M11.5 6 10.5 12M16 6v6M20.5 6l1 6"/><path d="M5 12a2.75 2.6 0 0 0 5.5 0 2.75 2.6 0 0 0 5.5 0 2.75 2.6 0 0 0 5.5 0 2.75 2.6 0 0 0 5.5 0"/><path d="M7 15.5V26h18V15.5"/><path class="s" d="M13.5 26v-6.5h5V26"/><circle class="n" cx="17.3" cy="23" r="1"/></svg></span>
-        <div class="tag">Local business</div>
-        <h3>Websites &amp; digital presence</h3>
-        <p>Website rebuilds and online-presence reviews for Philadelphia small businesses: clearer structure, current content and a path to booking.</p>
-      </div>
-      <div class="card">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 13h4l11-6.5v19L9 19H5z"/><path class="s" d="M9 19l1.6 6.5h3.2L12.6 20"/><path class="a" d="M23.3 12.8a4.6 4.6 0 0 1 0 6.4M26.3 9.6a9 9 0 0 1 0 12.8"/><circle class="n" cx="7" cy="16" r="1.3"/></svg></span>
-        <div class="tag">Campaigns &amp; advocacy</div>
-        <h3>Campaign management &amp; remediation</h3>
-        <p>Digital management for campaigns and advocacy efforts, from site, analytics and email to the voter file through press prep and outreach tracking. For sites or materials that aren't working, a fast audit and fixes on the platform already in use.</p>
-      </div>
-      <div class="card">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path class="a" d="M16 8.5 8 22.5h16Z" stroke-dasharray="2 2.2"/><circle class="s" cx="16" cy="17.8" r="2.2"/><circle class="w" cx="16" cy="7.5" r="3.6"/><circle class="w" cx="7.5" cy="23" r="3.6"/><circle class="w" cx="24.5" cy="23" r="3.6"/><circle class="n" cx="16" cy="7.5" r="1.4"/><circle class="n" cx="7.5" cy="23" r="1.4"/><circle class="n" cx="24.5" cy="23" r="1.4"/></svg></span>
-        <div class="tag">Community &amp; membership</div>
-        <h3>Brand &amp; web systems</h3>
-        <p>Brand guides, domains and websites for a neighborhood civic organization and a new social club, including a replicable site template and an events calendar kept current automatically.</p>
-      </div>
-      <div class="card">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M15 4H6a2 2 0 0 0-2 2v9l13 13 11-11Z"/><circle class="n" cx="10" cy="10" r="2"/><path class="a" d="m13.5 19.5 6-6M17 23l6-6"/></svg></span>
-        <div class="tag">Media</div>
-        <h3>Product catalog &amp; price book</h3>
-        <p>Designed the end-to-end Salesforce product catalog and price book strategy for a cybersecurity media company's sales organization.</p>
-      </div>
-      <div class="card">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><rect x="3" y="7" width="23" height="17" rx="2.5"/><circle cx="10" cy="13.5" r="2.6"/><path d="M6.2 20c.7-1.9 2.1-3 3.8-3s3.1 1.1 3.8 3"/><path class="s" d="M16.5 12.5h5.5M16.5 16h5.5"/><circle cx="25.5" cy="23.5" r="4" class="w"/><circle class="n" cx="25.5" cy="23.5" r="1.6"/></svg></span>
-        <div class="tag">Association software</div>
-        <h3>Member experience &amp; portal design</h3>
-        <p>Designed a member community prototype on a Salesforce-native association management platform, with the data model and demo data behind it.</p>
-      </div>
-      <div class="card">
-        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M12.5 4h7v8.5H28v7h-8.5V28h-7v-8.5H4v-7h8.5Z"/><path class="s" d="M16 9v14M9 16h14"/><circle class="n" cx="16" cy="16" r="2.2"/></svg></span>
-        <div class="tag">Healthcare</div>
-        <h3>Net-new CRM architecture</h3>
-        <p>Architected and implemented a new Salesforce org for a dental group, from edition selection and data migration to automated follow-up cadences.</p>
-      </div>
+    <div class="stats pf-kobn5">
+      <div class="stat"><div class="n">15<b>+</b></div><div class="l">years leading enterprise platform &amp; systems programs</div></div>
+      <div class="stat"><div class="n">$3<b>M+</b></div><div class="l">in programs &amp; managed services led across sectors</div></div>
+      <div class="stat"><div class="n">20<b>+</b></div><div class="l">cross-functional delivery team members led at once</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">sectors, from retail to healthcare</div></div>
     </div>
+    <div class="track-label">Credentials</div>
+    <ul class="sectors creds">
+      <li>MBA, Manhattan University, Cum Laude</li><li>BA, Rutgers University</li><li>Salesforce Certified Administrator</li>
+    </ul>
   </div>
 </section>
 
@@ -762,24 +686,41 @@
   </svg>
 </div>
 
-<!-- PROOF -->
-<section class="blk proof" id="proof">
+<!-- RECENT WORK -->
+<section class="blk work sec-dark" id="work">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">Proof</div>
+      <div class="eyebrow">Recent projects</div>
       <div class="goldrule"></div>
-      <h2>The shape of the work.</h2>
+      <h2>Digital strategy &amp; design, built to run.</h2>
+      <p>Recent independent efforts, described by sector.</p>
     </div>
-    <div class="stats pf-kobn5">
-      <div class="stat"><div class="n">15<b>+</b></div><div class="l">years leading enterprise platform &amp; systems programs</div></div>
-      <div class="stat"><div class="n">$3<b>M+</b></div><div class="l">in programs &amp; managed services led across sectors</div></div>
-      <div class="stat"><div class="n">20<b>+</b></div><div class="l">cross-functional delivery team members led at once</div></div>
-      <div class="stat"><div class="n">10</div><div class="l">sectors, from retail to healthcare</div></div>
+    <div class="cards wlist">
+      <div class="card">
+        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 12 7 6h18l2 6"/><path class="a" d="M11.5 6 10.5 12M16 6v6M20.5 6l1 6"/><path d="M5 12a2.75 2.6 0 0 0 5.5 0 2.75 2.6 0 0 0 5.5 0 2.75 2.6 0 0 0 5.5 0 2.75 2.6 0 0 0 5.5 0"/><path d="M7 15.5V26h18V15.5"/><path class="s" d="M13.5 26v-6.5h5V26"/><circle class="n" cx="17.3" cy="23" r="1"/></svg></span>
+        <div class="tag">Local business</div>
+        <h3>Websites &amp; digital presence</h3>
+        <p>Website rebuilds and online-presence reviews for Philadelphia small businesses: clearer structure, current content and a path to booking.</p>
+      </div>
+      <div class="card">
+        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M5 13h4l11-6.5v19L9 19H5z"/><path class="s" d="M9 19l1.6 6.5h3.2L12.6 20"/><path class="a" d="M23.3 12.8a4.6 4.6 0 0 1 0 6.4M26.3 9.6a9 9 0 0 1 0 12.8"/><circle class="n" cx="7" cy="16" r="1.3"/></svg></span>
+        <div class="tag">Campaigns &amp; advocacy</div>
+        <h3>Campaign management &amp; remediation</h3>
+        <p>Digital management for campaigns and advocacy efforts, from site, analytics and email to the voter file through press prep and outreach tracking. For sites or materials that aren't working, a fast audit and fixes on the platform already in use.</p>
+      </div>
+      <div class="card">
+        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path class="a" d="M16 8.5 8 22.5h16Z" stroke-dasharray="2 2.2"/><circle class="s" cx="16" cy="17.8" r="2.2"/><circle class="w" cx="16" cy="7.5" r="3.6"/><circle class="w" cx="7.5" cy="23" r="3.6"/><circle class="w" cx="24.5" cy="23" r="3.6"/><circle class="n" cx="16" cy="7.5" r="1.4"/><circle class="n" cx="7.5" cy="23" r="1.4"/><circle class="n" cx="24.5" cy="23" r="1.4"/></svg></span>
+        <div class="tag">Community &amp; membership</div>
+        <h3>Brand &amp; web systems</h3>
+        <p>Brand guides, domains and websites for a neighborhood civic organization and a new social club, including a replicable site template and an events calendar kept current automatically.</p>
+      </div>
+      <div class="card">
+        <span class="gl" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M12.5 4h7v8.5H28v7h-8.5V28h-7v-8.5H4v-7h8.5Z"/><path class="s" d="M16 9v14M9 16h14"/><circle class="n" cx="16" cy="16" r="2.2"/></svg></span>
+        <div class="tag">Healthcare &amp; associations</div>
+        <h3>CRM &amp; member platforms</h3>
+        <p>A net-new Salesforce org for a dental group, from edition selection and data migration to automated follow-up cadences, and a member community prototype for an association management platform, with the data model behind it.</p>
+      </div>
     </div>
-    <div class="track-label">Credentials</div>
-    <ul class="sectors creds">
-      <li>MBA, Manhattan University, Cum Laude</li><li>BA, Rutgers University</li><li>Salesforce Certified Administrator</li>
-    </ul>
   </div>
 </section>
 
@@ -841,7 +782,7 @@ var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInters
 </script>
 <script>
 (function(){var mq=window.matchMedia('(max-width:640px)');
-var els=[].slice.call(document.querySelectorAll('.pre-band .feat,#services .card,#services .cap,#work .card'));
+var els=[].slice.call(document.querySelectorAll('#services .card,#services .cap,#work .card'));
 function toggle(el){var o=el.classList.toggle('open');el.setAttribute('aria-expanded',o?'true':'false');}
 els.forEach(function(el){el.addEventListener('click',function(e){if(!mq.matches||e.target.closest('a'))return;toggle(el);});
 el.addEventListener('keydown',function(e){if(mq.matches&&(e.key==='Enter'||e.key===' ')){e.preventDefault();toggle(el);}});});
